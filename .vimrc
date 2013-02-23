@@ -9,11 +9,25 @@ else
     set guifont=DejaVu\ Sans\ Mono:h11
 endif
 
+if has('win32') || has('win64')
+    " Make windows use ~/.vim too, and ensure vimfiles is found
+    set runtimepath^=~/vimfiles
+    set runtimepath^=~/.vim
+endif
+
 if has("gui_running")
     color joe
 endif
 
 syntax on
+
+execute pathogen#infect()
+
+" z - toggles NERD Tree open / closed
+nmap z :NERDTreeToggle<CR>
+
+" closes NERD Tree, if it's the last buffer open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 set nocompatible
 set number
@@ -73,6 +87,12 @@ if exists("g:loaded_matchparen")
 endif
 runtime plugin/matchparen.vim
 DoMatchParen
+
+" On wrapped lines, if you move down, vim will skip the next line by default.
+" This is because it's not really a new line, it's the same line, wrapped.
+" This mapping changes that, so it will move down a 'screen line' instead of a 'text line'.
+:nmap j gj
+:nmap k gk
 
 " keep VIM in Expert mode
 nmap <Esc> <Nop>
