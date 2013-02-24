@@ -1,9 +1,12 @@
 
 # exclude everything
-**
+/*
+/*/
 
 # but allow this ...
-!/vimfiles
-!/.vim
+!/vimfiles/
+
+!/.vim/
+
 !.vimrc
 !DroidSansMono.ttf
