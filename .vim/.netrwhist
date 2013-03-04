@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='C:\Users\Joe'
+let g:netrw_dirhist_2='C:/Users/Joe/Projects'
+let g:netrw_dirhist_3='C:/Users/Joe/Projects/Slate'
+let g:netrw_dirhist_4='C:/Users/Joe/Projects/Slate/src'
+let g:netrw_dirhist_5='C:/Users/Joe/Projects/Slate/src/client'
+let g:netrw_dirhist_6='C:/Users/Joe/Projects/Slate/src/client/js'
+let g:netrw_dirhist_7='C:/Users/Joe/Projects/Slate/src/client'
+let g:netrw_dirhist_8='C:/Users/Joe/Projects/Slate/src'
+let g:netrw_dirhist_9='C:/Users/Joe/Projects/Slate/src/client'

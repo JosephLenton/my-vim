@@ -1,4 +1,8 @@
 
+" 
+" # Theme and Font
+" 
+
 " set custom theme settings
 if has("win32")
     set gfn=Droid\ Sans\ Mono:h11
@@ -13,21 +17,23 @@ if has('win32') || has('win64')
     " Make windows use ~/.vim too, and ensure vimfiles is found
     set runtimepath^=~/vimfiles
     set runtimepath^=~/.vim
+
+    " hitting ctrl+z opens powershell
+    nmap <C-Z> :silent !powershell<CR>
 endif
 
 if has("gui_running")
     color joe
 endif
 
+"
+" # Settings
+"
+
+cd ~
+set autochdir
+
 syntax on
-
-execute pathogen#infect()
-
-" z - toggles NERD Tree open / closed
-nmap z :NERDTreeToggle<CR>
-
-" closes NERD Tree, if it's the last buffer open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 set nocompatible
 set number
@@ -50,7 +56,38 @@ filetype on
 filetype plugin on
 set ofu=syntaxcomplete#Complete
 
-" move whole line up or down with ctrl+j/k
+" enable bracket matching highlighting
+if exists("g:loaded_matchparen")
+    unlet g:loaded_matchparen
+endif
+runtime plugin/matchparen.vim
+DoMatchParen
+
+"
+" # Pathogen, vim auto-loader
+"
+" Allows files in ~/vimfiles and ~/.vim,
+" to be found by vim proper, and loaded.
+"
+
+silent! execute pathogen#infect()
+
+"
+" # NerdTREE Settings
+"
+
+" z - toggles NERD Tree open / closed
+nmap z :silent NERDTreeToggle<CR>
+
+" closes NERD Tree, if it's the last buffer open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" 
+" # Swap Lines up and down
+"
+" move whole line up or down with ctrl+shift+j/k
+"
+
 function! s:swap_lines(n1, n2)
     let line1 = getline(a:n1)
     let line2 = getline(a:n2)
@@ -78,15 +115,41 @@ function! s:swap_down()
     exec n + 1
 endfunction
 
-noremap <c-k> :call <SID>swap_up()<CR>
-noremap <c-j> :call <SID>swap_down()<CR>
+" ctrl-shift-k and ctrl-shift-j swap lines up and down
+noremap <c-s-k> :call <SID>swap_up()<CR>
+noremap <c-s-j> :call <SID>swap_down()<CR>
 
-" enable bracket matching highlighting
-if exists("g:loaded_matchparen")
-    unlet g:loaded_matchparen
+"
+" # Insert mode h/j/k/l movement
+"
+"
+inoremap <c-k> <up>
+inoremap <c-j> <down>
+inoremap <c-h> <left>
+inoremap <c-l> <right>
+
+" 
+" # Easier window navigation
+"
+" ctrl+w and then h/j/k/l, switches windows
+" This maps those to just: ctrl+h, ctrl+j, ctrl+k and ctrl+l, for ease of use.
+
+nnoremap <c-k> <c-w>k
+nnoremap <c-j> <c-w>j
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+"
+" # b#, alternatives
+"
+
+" ctrl-tab only works in gvim, and not terminal vim : (
+if has("gui_running")
+    nmap <C-Tab> :b#
 endif
-runtime plugin/matchparen.vim
-DoMatchParen
+
+" ctrl + b swaps between current and last buffer, like ctrl+tab
+nmap <c-b> :b#<cr>
 
 " On wrapped lines, if you move down, vim will skip the next line by default.
 " This is because it's not really a new line, it's the same line, wrapped.
@@ -106,8 +169,14 @@ set virtualedit=block
 " has Cream start in Expert mode, not insert
 set noinsertmode
 
-" quick escape from insert mode using 'kj'
+"
+" # Quick Escape
+"
+" 'kj' is an alternative to pressing escape.
+" 'jh' is the same, but also undoes the entry.
+"
 imap kj <Esc>
+imap jh <Esc>u
 
 " ~ and # search for the word under the caret, forward and back
 nnoremap ~ #
