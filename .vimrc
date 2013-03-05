@@ -46,8 +46,10 @@ endfunction
 let do_syntax_sel_menu=1
 
 " colour column syntax highlighting
-set colorcolumn=80
-highlight ColorColumn ctermbg=darkgrey guibg=gray18
+if version >= 730
+    set colorcolumn=80
+    highlight ColorColumn ctermbg=darkgrey guibg=gray18
+end
 
 cd ~
 set autochdir
@@ -74,6 +76,9 @@ filetype on
 
 filetype plugin on
 set ofu=syntaxcomplete#Complete
+
+au BufNewFile,BufRead *.jsx set filetype=javascriptx
+au BufNewFile,BufRead *.ts set filetype=typescript
 
 " enable bracket matching highlighting
 if exists("g:loaded_matchparen")
