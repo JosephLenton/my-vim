@@ -40,14 +40,15 @@ fun! <SID>X(a)
 endfun
 
 if has("gui_running")
-	hi Normal         gui=NONE   guifg=#E0E0E0   guibg=#141414
+	hi Normal         gui=NONE   guifg=#eeeeee   guibg=#141414
+
 	hi IncSearch      gui=BOLD   guifg=#303030   guibg=#cd8b60
 	hi Search         gui=NONE   guifg=#303030   guibg=#cd8b60
 	hi ErrorMsg       gui=BOLD   guifg=#ffffff   guibg=#ce4e4e
 	hi WarningMsg     gui=BOLD   guifg=#ffffff   guibg=#ce8e4e
-	hi ModeMsg        gui=BOLD   guifg=#7e7eae   guibg=NONE
-	hi MoreMsg        gui=BOLD   guifg=#7e7eae   guibg=NONE
-	hi Question       gui=BOLD   guifg=#ffcd00   guibg=NONE
+	hi ModeMsg        gui=BOLD   guifg=#7e7eae   
+	hi MoreMsg        gui=BOLD   guifg=#7e7eae   
+	hi Question       gui=BOLD   guifg=#ffcd00   
 
 	hi StatusLine     gui=BOLD   guifg=#b9b9b9   guibg=#3e3e5e
 	hi StatusLineNC   gui=NONE   guifg=#b9b9b9   guibg=#3e3e5e
@@ -72,29 +73,30 @@ if has("gui_running")
 	hi Folded         gui=NONE   guifg=#cfcfcd   guibg=#4b208f
 	hi FoldColumn     gui=NONE   guifg=#8b8bcd   guibg=#2e2e2e
 
-	hi Directory      gui=NONE   guifg=#00ff8b   guibg=NONE
+	hi Directory      gui=NONE   guifg=#00ff8b   
 	hi LineNr         gui=NONE   guifg=#8A8A8A   guibg=#2E3436
-	hi NonText        gui=BOLD   guifg=#8b8bcd   guibg=NONE
-	hi SpecialKey     gui=BOLD   guifg=#ab60ed   guibg=NONE
-	hi Title          gui=BOLD   guifg=#af4f4b   guibg=#141414
+	hi NonText        gui=BOLD   guifg=#8b8bcd   
+	hi SpecialKey     gui=BOLD   guifg=#ab60ed   
+	"hi Title          gui=BOLD   guifg=#af4f4b   guibg=#141414
+	hi Title          gui=BOLD   guifg=#af4f4b   
 	hi Visual         gui=NONE   guifg=#eeeeee   guibg=#4e4e8f
 
-	hi Comment        gui=NONE   guifg=#858EB1   guibg=NONE
-	hi LineComment    gui=NONE   guifg=#808080   guibg=NONE
-	hi DocComment     gui=NONE   guifg=#88FFFF   guibg=NONE
-	hi Constant       gui=NONE   guifg=#CF6A4C   guibg=NONE
-	hi String         gui=NONE   guifg=#65B042   guibg=NONE
+	hi Comment        gui=NONE   guifg=#858EB1   
+	hi LineComment    gui=NONE   guifg=#808080   
+	hi DocComment     gui=NONE   guifg=#88FFFF   
+	hi Constant       gui=NONE   guifg=#CF6A4C   
+	hi String         gui=NONE   guifg=#65B042   
 	hi Error          gui=NONE   guifg=#ffffff   guibg=#6e2e2e
-	hi Identifier     gui=NONE   guifg=#DECF85   guibg=NONE
-	hi Ignore         gui=NONE   guifg=#8b8bcd   guibg=NONE
-	hi Number         gui=NONE   guifg=#CF6A4C   guibg=NONE
-	hi PreProc        gui=NONE   guifg=#409090   guibg=NONE
-	hi Special        gui=NONE   guifg=#c080d0   guibg=NONE
-	hi Statement      gui=NONE   guifg=#DECF85   guibg=NONE
+	hi Identifier     gui=NONE   guifg=#DECF85   
+	hi Ignore         gui=NONE   guifg=#8b8bcd   
+	hi Number         gui=NONE   guifg=#CF6A4C   
+	hi PreProc        gui=NONE   guifg=#409090   
+	hi Special        gui=NONE   guifg=#c080d0   
+	hi Statement      gui=NONE   guifg=#DECF85   
 	hi Todo           gui=BOLD   guifg=#303030   guibg=#d0a060
-	hi Type           gui=NONE   guifg=#DECF85   guibg=NONE
-	hi Underlined     gui=BOLD   guifg=#ffffcd   guibg=NONE
-	hi TaglistTagName gui=BOLD   guifg=#808bed   guibg=NONE
+	hi Type           gui=NONE   guifg=#DECF85   
+	hi Underlined     gui=BOLD   guifg=#ffffcd   
+	hi TaglistTagName gui=BOLD   guifg=#808bed   
 
 	if v:version >= 700
 		hi Pmenu          gui=NONE   guifg=#eeeeee   guibg=#4e4e8f
@@ -107,6 +109,11 @@ if has("gui_running")
 		hi SpellLocal   gui=undercurl guisp=#cccc66
 		hi SpellCap     gui=undercurl guisp=#66cccc
 	endif
+
+	hi LineHighlight        gui=NONE   guifg=NONE   guibg=#171c20
+
+    hi CursorLine gui=NONE guibg=#1f1f1f
+    hi CursorLine gui=NONE guibg=#1d2328
 else
 	exec "hi Normal         cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(80)
 	exec "hi IncSearch      cterm=BOLD   ctermfg=" . <SID>X(80) . " ctermbg=" . <SID>X(73)
@@ -200,4 +207,6 @@ highlight EQuote3 guifg=#3333ff
 highlight Sig guifg=#999999
 
 "+++
+
+highlight ColorColumn ctermbg=darkgrey guibg=gray18
 

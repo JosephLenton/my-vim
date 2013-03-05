@@ -27,8 +27,27 @@ if has("gui_running")
 endif
 
 "
+" # Printer Settings
+"
+
+command! -nargs=* Hardcopy call DoMyPrint('<args>')
+function DoMyPrint(args)
+  let colorsave=g:colors_name
+  color print
+  exec 'hardcopy '.a:args
+  exec 'color '.colorsave
+endfunction
+
+"
 " # Settings
 "
+
+" auto expand the file menu by default
+let do_syntax_sel_menu=1
+
+" colour column syntax highlighting
+set colorcolumn=80
+highlight ColorColumn ctermbg=darkgrey guibg=gray18
 
 cd ~
 set autochdir
@@ -82,12 +101,16 @@ nmap z :silent NERDTreeToggle<CR>
 " closes NERD Tree, if it's the last buffer open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" maps - and = for fast input, 
+" replaces current line, with a line of ------'s or ====='s
+nmap = <Enter>0d<S-L>79i=<Esc>k
+nmap - <Enter>0d<S-L>79i-<Esc>k
+
 " 
 " # Swap Lines up and down
 "
 " move whole line up or down with ctrl+shift+j/k
 "
-
 function! s:swap_lines(n1, n2)
     let line1 = getline(a:n1)
     let line2 = getline(a:n2)
@@ -243,7 +266,10 @@ nnoremap <S-Tab> <<
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
+" always show cursor line
 hi CursorLine guibg=#1f1f1f
+windo set cursorline
+redraw
 
 " Pulses the current line
 nnoremap n n:call PulseCursorLine()<cr>
@@ -263,39 +289,39 @@ function! PulseCursorLine()
     let old_hi = split(old_hi, '\n')[0]
     let old_hi = substitute(old_hi, 'xxx', '', '')
 
-    hi CursorLine guibg=#1f1f1f
+    hi CursorLine ctermbg=darkgrey guibg=#1f1f1f
     redraw
     sleep 20m
 
-    hi CursorLine guibg=#2e2e2e
+    hi CursorLine ctermbg=darkgrey guibg=#2e2e2e
     redraw
     sleep 20m
 
-    hi CursorLine guibg=#303030
+    hi CursorLine ctermbg=darkgrey guibg=#303030
     redraw
     sleep 20m
 
-    hi CursorLine guibg=#383838
+    hi CursorLine ctermbg=darkgrey guibg=#383838
     redraw
     sleep 20m
 
-    hi CursorLine guibg=#404040
+    hi CursorLine ctermbg=darkgrey guibg=#404040
     redraw
     sleep 20m
 
-    hi CursorLine guibg=#383838
+    hi CursorLine ctermbg=darkgrey guibg=#383838
     redraw
     sleep 20m
 
-    hi CursorLine guibg=#303030
+    hi CursorLine ctermbg=darkgrey guibg=#303030
     redraw
     sleep 20m
 
-    hi CursorLine guibg=#2f2f2f
+    hi CursorLine ctermbg=darkgrey guibg=#2f2f2f
     redraw
     sleep 20m
 
-    hi CursorLine guibg=#1f1f1f
+    hi CursorLine ctermbg=darkgrey guibg=#1f1f1f
     redraw
     sleep 20m
 
@@ -304,5 +330,4 @@ function! PulseCursorLine()
     windo set cursorline
     execute current_window . 'wincmd w'
 endfunction
-
 
