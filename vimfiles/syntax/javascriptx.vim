@@ -416,6 +416,8 @@ function! MDBlockHighlightCursor()
 endfunction
 
 function! MDBlockHighlightAll()
+    sign unplace *
+
     call MDBlockHighlight( 0, line("$"), line("$") )
 endfunction
 
@@ -467,6 +469,16 @@ function! MDBlockHighlight( i, maxI, maxSearch )
                             let endI = endI+1
                         end
                     end
+                end
+            end
+
+            if i == 1
+                if getline(0) == ""
+                    let i = 0
+                end
+            elseif i > 1
+                if getline(i-1) == "" && getline(i-2) == ""
+                    let i = i-1
                 end
             end
 
@@ -586,6 +598,10 @@ function! MDUnhighlight( startI, endI, maxI )
     endwhile
 endfunction
 
-autocmd BufWrite,BufEnter,CursorHold,CursorHoldI *.jsx call MDBlockHighlightAll()
-autocmd CursorMovedI *.jsx call MDBlockHighlightCursor()
+augroup MDDocHighlighting
+    autocmd!
+
+    autocmd BufWrite,BufEnter,CursorHold,CursorHoldI *.jsx call MDBlockHighlightAll()
+    autocmd CursorMovedI *.jsx call MDBlockHighlightCursor()
+augroup END
 
