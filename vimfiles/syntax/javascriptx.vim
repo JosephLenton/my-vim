@@ -450,7 +450,7 @@ function! MDBlockHighlight( i, maxI, maxSearch )
             
             let indentBeyond = 1
 
-            if matchstr(line, '^[-]\+') != "" && matchstr(line, '^[=]\+') != ""
+            if matchstr(line, '^[-](-\| )\+$') != "" && matchstr(line, '^[=](=\| )\+$') != ""
                 if endI > 0 && getline(endI-1) != ""
                     let indentBeyond = 1
                 else
@@ -477,8 +477,13 @@ function! MDBlockHighlight( i, maxI, maxSearch )
                     let i = 0
                 end
             elseif i > 1
-                if getline(i-1) == "" && getline(i-2) == ""
-                    let i = i-1
+                let currentLine = getline(i)
+
+                if matchstr(currentLine, '^[-]\(-\| \)\+$') == "" && matchstr(currentLine, '^[=]\(=\| \)\+$') == ""
+                "if matchstr(currentLine, '^[-]\+$') == "" && matchstr(currentLine, '^[=]\+$') == ""
+                    if getline(i-1) == "" && getline(i-2) == ""
+                        let i = i-1
+                    end
                 end
             end
 
