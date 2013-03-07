@@ -46,7 +46,7 @@ endfunction
 let do_syntax_sel_menu=1
 
 " colour column syntax highlighting
-if version >= 730
+if version >= 703
     set colorcolumn=80
     highlight ColorColumn ctermbg=darkgrey guibg=gray18
 end
