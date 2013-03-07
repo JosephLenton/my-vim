@@ -2,8 +2,8 @@
 " 
 " # Theme and Font
 " 
-
 " set custom theme settings
+"
 if has("win32")
     set gfn=Droid\ Sans\ Mono:h11
     set gfn+=DejaVu\ Sans\ Mono:h11
@@ -51,6 +51,9 @@ if version >= 703
     highlight ColorColumn ctermbg=darkgrey guibg=gray18
 end
 
+" Remove menu bar
+set guioptions-=T
+
 cd ~
 set autochdir
 
@@ -69,8 +72,14 @@ set smartcase
 set tabstop=4
 set shiftwidth=4
 set expandtab
-
+set nowrap
 set spelllang=en_gb
+
+" disable the (annoying) swap files you get with vim
+set noswapfile
+
+" allows me to walk anywhere on the screen
+set virtualedit=block
 
 filetype on
 
@@ -182,20 +191,8 @@ nmap <c-b> :b#<cr>
 " On wrapped lines, if you move down, vim will skip the next line by default.
 " This is because it's not really a new line, it's the same line, wrapped.
 " This mapping changes that, so it will move down a 'screen line' instead of a 'text line'.
-:nmap j gj
-:nmap k gk
-
-" keep VIM in Expert mode
-nmap <Esc> <Nop>
-
-" disable the (annoying) swap files you get with vim
-set noswapfile
-
-" allows me to walk anywhere on the screen
-set virtualedit=block
-
-" has Cream start in Expert mode, not insert
-set noinsertmode
+nmap j gj
+nmap k gk
 
 "
 " # Quick Escape
@@ -206,19 +203,9 @@ set noinsertmode
 imap kj <Esc>
 imap jh <Esc>u
 
-" ~ and # search for the word under the caret, forward and back
-nnoremap ~ #
-nnoremap # *
-
 " Space appends a character, shift-space inserts a single character
 nmap <Space> a_<Esc>r
 nmap <S-Space> i_<Esc>r
-
-" Remove menu bar
-set guioptions-=T
-
-" Remove line wrapping
-set nowrap
 
 " Move Text around with Alt+hjkl
 nnoremap <A-j> :m+<CR>==
@@ -247,8 +234,9 @@ command! W :w
 map H ^
 map L $
 
-" Remap K to *, as it's annoying that it opens help
-map K *
+" Shift + k, is the opposite of shift + j.
+" That combines lines, this seperates them.
+nmap <S-k> <S-e>li<CR><Esc>
 
 " Adds Ctrl-Tab for quick switching
 map <C-tab> :b#<CR>
@@ -272,13 +260,42 @@ vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
 " always show cursor line
-hi CursorLine guibg=#1f1f1f
+hi CursorLine ctermbg=darkred guibg=#1f1f1f
 windo set cursorline
 redraw
 
-" Pulses the current line
-nnoremap n n:call PulseCursorLine()<cr>
-nnoremap N N:call PulseCursorLine()<cr>
+" ~ and # search for the word under the caret, forward and back
+let g:searchMoveIsDown = 1
+
+nnoremap ? :let b:searchMoveIsDown = 0<CR>?
+nnoremap / :let b:searchMoveIsDown = 1<CR>/
+nnoremap ~ :let b:searchMoveIsDown = 0<CR>#
+nnoremap # :let b:searchMoveIsDown = 1<CR>*
+
+" Repeats the previous search, but always travelling in the same direction.
+" So 'n' always searches for the next down, and 'N', is always up.
+" Also pulses the current line.
+"nnoremap N :call RepeatSearchUp()<cr>:call PulseCursorLine()<cr>
+"nnoremap n :call RepeatSearchDown()<cr>:call PulseCursorLine()<cr>
+
+nnoremap N :call RepeatSearchUp()<cr>
+nnoremap n :call RepeatSearchDown()<cr>
+
+function! RepeatSearchUp()
+    if ( b:searchMoveIsDown == 0 )
+        normal! n
+    else
+        normal! N
+    end
+endfunction
+
+function! RepeatSearchDown()
+    if ( b:searchMoveIsDown == 1 )
+        normal! n
+    else
+        normal! N
+    end
+endfunction
 
 function! PulseCursorLine()
     let current_window = winnr()
@@ -294,39 +311,39 @@ function! PulseCursorLine()
     let old_hi = split(old_hi, '\n')[0]
     let old_hi = substitute(old_hi, 'xxx', '', '')
 
-    hi CursorLine ctermbg=darkgrey guibg=#1f1f1f
+    hi CursorLine ctermbg=darkred guibg=#1f1f1f
     redraw
     sleep 20m
 
-    hi CursorLine ctermbg=darkgrey guibg=#2e2e2e
+    hi CursorLine ctermbg=darkred guibg=#2e2e2e
     redraw
     sleep 20m
 
-    hi CursorLine ctermbg=darkgrey guibg=#303030
+    hi CursorLine ctermbg=darkred guibg=#303030
     redraw
     sleep 20m
 
-    hi CursorLine ctermbg=darkgrey guibg=#383838
+    hi CursorLine ctermbg=red guibg=#383838
     redraw
     sleep 20m
 
-    hi CursorLine ctermbg=darkgrey guibg=#404040
+    hi CursorLine ctermbg=red guibg=#404040
     redraw
     sleep 20m
 
-    hi CursorLine ctermbg=darkgrey guibg=#383838
+    hi CursorLine ctermbg=red guibg=#383838
     redraw
     sleep 20m
 
-    hi CursorLine ctermbg=darkgrey guibg=#303030
+    hi CursorLine ctermbg=red guibg=#303030
     redraw
     sleep 20m
 
-    hi CursorLine ctermbg=darkgrey guibg=#2f2f2f
+    hi CursorLine ctermbg=red guibg=#2f2f2f
     redraw
     sleep 20m
 
-    hi CursorLine ctermbg=darkgrey guibg=#1f1f1f
+    hi CursorLine ctermbg=darkred guibg=#1f1f1f
     redraw
     sleep 20m
 
