@@ -361,7 +361,7 @@ hi def link markdownCodeDelimiter         Delimiter
 
 hi def link markdownEscape                Special
 
-sign define wholeline linehl=LineHighlight
+sign define wholeline linehl=Documentation
 
 let g:mdMaxCursorSearchDist = 20
 
