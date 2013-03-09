@@ -44,8 +44,8 @@ if has("gui_running")
 
 	hi IncSearch      gui=BOLD   guifg=#303030   guibg=#cd8b60
 	hi Search         gui=NONE   guifg=#303030   guibg=#cd8b60
-	hi ErrorMsg       gui=BOLD   guifg=#ffffff   guibg=#ce4e4e
-	hi WarningMsg     gui=BOLD   guifg=#ffffff   guibg=#ce8e4e
+	hi ErrorMsg       gui=BOLD   guifg=#ffffff   guibg=#ff3c3c
+	hi WarningMsg     gui=BOLD   guifg=#ffffff   guibg=#fca73f 
 	hi ModeMsg        gui=BOLD   guifg=#7e7eae   
 	hi MoreMsg        gui=BOLD   guifg=#7e7eae   
 	hi Question       gui=BOLD   guifg=#ffcd00   
@@ -79,7 +79,7 @@ if has("gui_running")
 	hi SpecialKey     gui=BOLD   guifg=#ab60ed   
 	"hi Title          gui=BOLD   guifg=#af4f4b   guibg=#141414
 	hi Title          gui=BOLD   guifg=#af4f4b   
-	hi Visual         gui=NONE   guifg=#eeeeee   guibg=#4e4e8f
+	hi Visual         gui=NONE   guifg=#ffffff   guibg=#ff2377
 
 	hi Comment        gui=NONE   guifg=#858EB1   
 	hi LineComment    gui=NONE   guifg=#808080   
@@ -88,12 +88,12 @@ if has("gui_running")
 	hi String         gui=NONE   guifg=#65B042   
 	hi Error          gui=NONE   guifg=#ffffff   guibg=#6e2e2e
 	hi Identifier     gui=NONE   guifg=#DECF85   
-	hi Ignore         gui=NONE   guifg=#8b8bcd   
 	hi Number         gui=NONE   guifg=#CF6A4C   
+	hi Ignore         gui=NONE   guifg=#8b8bcd   
 	hi PreProc        gui=NONE   guifg=#409090   
 	hi Special        gui=NONE   guifg=#c080d0   
 	hi Statement      gui=NONE   guifg=#DECF85   
-	hi Todo           gui=BOLD   guifg=#303030   guibg=#d0a060
+	hi Todo           gui=BOLD   guifg=#ffffff   guibg=#415168
 	hi Type           gui=NONE   guifg=#DECF85   
 	hi Underlined     gui=BOLD   guifg=#ffffcd   
 	hi TaglistTagName gui=BOLD   guifg=#808bed   
