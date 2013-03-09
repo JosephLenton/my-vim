@@ -1,9 +1,21 @@
 
+"==============================================================================
+"
+"       .vimrc
+"
+" My own .vimrc settings. It aims to be independant of the plugins also
+" included, so this could be used without them.
+"
+"==============================================================================
+
+"------------------------------------------------------------------------------
 " 
 " # Theme and Font
 " 
 " set custom theme settings
 "
+"------------------------------------------------------------------------------
+
 if has("win32")
     set gfn=Droid\ Sans\ Mono:h11
     set gfn+=DejaVu\ Sans\ Mono:h11
@@ -13,8 +25,10 @@ else
     set guifont=DejaVu\ Sans\ Mono:h11
 endif
 
+color joe
+
 if has('win32') || has('win64')
-    " Make windows use ~/.vim too, and ensure vimfiles is found
+    " offer both Win & Unix user vimfile locations 
     set runtimepath^=~/vimfiles
     set runtimepath^=~/.vim
 
@@ -22,30 +36,16 @@ if has('win32') || has('win64')
     nmap <C-Z> :silent !powershell<CR>
 endif
 
-if has("gui_running")
-    color joe
-endif
-
-"
-" # Printer Settings
-"
-
-command! -nargs=* Hardcopy call DoMyPrint('<args>')
-function DoMyPrint(args)
-  let colorsave=g:colors_name
-  color print
-  exec 'hardcopy '.a:args
-  exec 'color '.colorsave
-endfunction
-
+"------------------------------------------------------------------------------
 "
 " # Settings
 "
+"------------------------------------------------------------------------------
 
 " auto expand the file menu by default
 let do_syntax_sel_menu=1
 
-" colour column syntax highlighting
+" colour column syntax highlighting (Vim 7.3+ only)
 if version >= 703
     set colorcolumn=80
     highlight ColorColumn ctermbg=darkgrey guibg=gray18
@@ -56,8 +56,6 @@ set guioptions-=T
 
 cd ~
 set autochdir
-
-syntax on
 
 set nocompatible
 set number
@@ -81,29 +79,41 @@ set noswapfile
 " allows me to walk anywhere on the screen
 set virtualedit=block
 
-filetype on
-
-filetype plugin on
-set ofu=syntaxcomplete#Complete
-
-au BufNewFile,BufRead *.jsx set filetype=javascriptx
-au BufNewFile,BufRead *.ts set filetype=typescript
-
-" enable bracket matching highlighting
-if exists("g:loaded_matchparen")
-    unlet g:loaded_matchparen
-endif
-runtime plugin/matchparen.vim
-DoMatchParen
-
+"------------------------------------------------------------------------------
 "
 " # Pathogen, vim auto-loader
 "
 " Allows files in ~/vimfiles and ~/.vim,
 " to be found by vim proper, and loaded.
 "
+"------------------------------------------------------------------------------
 
 silent! execute pathogen#infect()
+silent! call pathogen#runtime_append_all_bundles()
+
+" syntax highlighting must be turned off/on *after* pathagen loaded
+filetype off
+syntax on
+filetype plugin on
+
+set ofu=syntaxcomplete#Complete
+
+au BufNewFile,BufRead *.jsx set filetype=javascriptx
+au BufNewFile,BufRead *.ts set filetype=typescript
+
+
+
+"------------------------------------------------------------------------------
+"
+" Bracket Matching Highlighting
+"
+"------------------------------------------------------------------------------
+
+if exists("g:loaded_matchparen")
+    unlet g:loaded_matchparen
+endif
+runtime plugin/matchparen.vim
+DoMatchParen
 
 "
 " # NerdTREE Settings
@@ -120,11 +130,16 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 nmap = <Enter>0d<S-L>79i=<Esc>k
 nmap - <Enter>0d<S-L>79i-<Esc>k
 
+
+
+"------------------------------------------------------------------------------
 " 
 " # Swap Lines up and down
 "
 " move whole line up or down with ctrl+shift+j/k
 "
+"------------------------------------------------------------------------------
+
 function! s:swap_lines(n1, n2)
     let line1 = getline(a:n1)
     let line2 = getline(a:n2)
@@ -156,18 +171,26 @@ endfunction
 noremap <c-s-k> :call <SID>swap_up()<CR>
 noremap <c-s-j> :call <SID>swap_down()<CR>
 
+
+
+"------------------------------------------------------------------------------
 "
 " # Insert mode h/j/k/l movement
 "
-"
+"------------------------------------------------------------------------------
+
 inoremap <c-k> <up>
 inoremap <c-j> <down>
 inoremap <c-h> <left>
 inoremap <c-l> <right>
 
+
+
+"------------------------------------------------------------------------------
 " 
 " # Easier window navigation
 "
+"------------------------------------------------------------------------------
 
 " ctrl+w and then h/j/k/l, switches windows
 " This maps those to just: ctrl+h, ctrl+j, ctrl+k and ctrl+l, for ease of use.
@@ -186,10 +209,13 @@ nnoremap <c-n> <c-w>t<c-w>K
 " horizontal to vertical
 nnoremap <c-m> <c-w>t<c-w>H
 
-"
+
+
+"------------------------------------------------------------------------------
 "
 " # b#, alternatives
 "
+"------------------------------------------------------------------------------
 
 " ctrl-tab only works in gvim, and not terminal vim : (
 if has("gui_running")
@@ -205,12 +231,17 @@ nmap <c-b> :b#<cr>
 nmap j gj
 nmap k gk
 
+
+
+"------------------------------------------------------------------------------
 "
 " # Quick Escape
 "
 " 'kj' is an alternative to pressing escape.
 " 'jh' is the same, but also undoes the entry.
 "
+"------------------------------------------------------------------------------
+
 imap kj <Esc>
 imap jh <Esc>u
 
@@ -247,10 +278,18 @@ map L $
 
 " Shift + k, is the opposite of shift + j.
 " That combines lines, this seperates them.
-nmap <S-k> <S-e>li<CR><Esc>
+function! SplitLine()
+    if getline(".")[col(".")-1] != ' '
+        normal! E
+    end
+
+    call feedkeys( "a\<cr>\<esc>" )
+endfunction
+
+nmap <S-k> :call SplitLine()<cr>
 
 " Adds Ctrl-Tab for quick switching
-map <C-tab> :b#<CR>
+nnoremap <C-tab> :b#<CR>
 
 " Highlight conflicting markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -271,26 +310,22 @@ vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
 " always show cursor line
-hi CursorLine ctermbg=darkred guibg=#1f1f1f
 windo set cursorline
 redraw
 
 " ~ and # search for the word under the caret, forward and back
-let g:searchMoveIsDown = 1
+let b:searchMoveIsDown = 1
 
 nnoremap ? :let b:searchMoveIsDown = 0<CR>?
 nnoremap / :let b:searchMoveIsDown = 1<CR>/
-nnoremap ~ :let b:searchMoveIsDown = 0<CR>#
-nnoremap # :let b:searchMoveIsDown = 1<CR>*
+nnoremap ~ :let b:searchMoveIsDown = 0<CR>#:call PulseCursorLine()<cr>
+nnoremap # :let b:searchMoveIsDown = 1<CR>*:call PulseCursorLine()<cr>
 
 " Repeats the previous search, but always travelling in the same direction.
 " So 'n' always searches for the next down, and 'N', is always up.
 " Also pulses the current line.
-"nnoremap N :call RepeatSearchUp()<cr>:call PulseCursorLine()<cr>
-"nnoremap n :call RepeatSearchDown()<cr>:call PulseCursorLine()<cr>
-
-nnoremap N :call RepeatSearchUp()<cr>
-nnoremap n :call RepeatSearchDown()<cr>
+nnoremap N :call RepeatSearchUp()<cr>:call PulseCursorLine()<cr>
+nnoremap n :call RepeatSearchDown()<cr>:call PulseCursorLine()<cr>
 
 function! RepeatSearchUp()
     if ( b:searchMoveIsDown == 0 )
