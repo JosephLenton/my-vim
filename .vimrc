@@ -168,14 +168,25 @@ inoremap <c-l> <right>
 " 
 " # Easier window navigation
 "
+
 " ctrl+w and then h/j/k/l, switches windows
 " This maps those to just: ctrl+h, ctrl+j, ctrl+k and ctrl+l, for ease of use.
-
 nnoremap <c-k> <c-w>k
 nnoremap <c-j> <c-w>j
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+" m, horizontal split
+" M, vertical split
+nnoremap m <c-w>v
+nnoremap M <c-w>s
+
+" vertical to horizontal
+nnoremap <c-n> <c-w>t<c-w>K
+" horizontal to vertical
+nnoremap <c-m> <c-w>t<c-w>H
+
+"
 "
 " # b#, alternatives
 "
