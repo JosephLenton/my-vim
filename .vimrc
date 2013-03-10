@@ -101,8 +101,6 @@ set ofu=syntaxcomplete#Complete
 au BufNewFile,BufRead *.jsx set filetype=javascriptx
 au BufNewFile,BufRead *.ts set filetype=typescript
 
-
-
 "------------------------------------------------------------------------------
 "
 " Bracket Matching Highlighting
@@ -204,10 +202,9 @@ nnoremap <c-l> <c-w>l
 nnoremap m <c-w>v
 nnoremap M <c-w>s
 
-" vertical to horizontal
+" vertical to horizontal & horizontal to vertical
 nnoremap <c-n> <c-w>t<c-w>K
-" horizontal to vertical
-nnoremap <c-m> <c-w>t<c-w>H
+nnoremap <C-m> <c-w>t<c-w>H
 
 
 
@@ -300,7 +297,6 @@ set nofoldenable
 " Enter New lines above and below, without insert
 map <S-Enter> O<Esc>
 map <Enter> o<Esc>
-map M mqr<Enter><Esc>'q$l
 
 " Tab / Shift-Tab indentation
 nnoremap <Tab> >>
