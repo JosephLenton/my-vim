@@ -606,7 +606,7 @@ endfunction
 augroup MDDocHighlighting
     autocmd!
 
-    autocmd BufWrite,BufEnter,CursorHold,CursorHoldI *.jsx call MDBlockHighlightAll()
+    autocmd BufWinEnter,BufWrite,VimEnter,CursorHold,CursorHoldI *.jsx call MDBlockHighlightAll()
     autocmd CursorMovedI *.jsx call MDBlockHighlightCursor()
 augroup END
 
