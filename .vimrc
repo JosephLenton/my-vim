@@ -17,9 +17,9 @@
 "------------------------------------------------------------------------------
 
 if has("win32")
-    set gfn=Droid\ Sans\ Mono:h11
-    set gfn+=DejaVu\ Sans\ Mono:h11
-    set gfn+=Courier:h12
+    "set gfn=Droid\ Sans\ Mono:h11
+    "set gfn+=DejaVu\ Sans\ Mono:h11
+    set gfn=Consolas:h12
 else
     "set guifont=DejaVu\ Sans\ Mono 11
     set guifont=DejaVu\ Sans\ Mono:h11
@@ -41,6 +41,9 @@ endif
 " # Settings
 "
 "------------------------------------------------------------------------------
+
+set encoding=utf-8
+set winaltkeys=no
 
 " auto expand the file menu by default
 let do_syntax_sel_menu=1
@@ -127,6 +130,60 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " replaces current line, with a line of ------'s or ====='s
 nmap = <Enter>0d<S-L>79i=<Esc>k
 nmap - <Enter>0d<S-L>79i-<Esc>k
+
+"------------------------------------------------------------------------------
+"
+" # Unicode
+"
+"------------------------------------------------------------------------------
+
+" alpha
+inoremap <A-a> α
+
+" beta
+inoremap <A-b> β
+
+" gamma 
+inoremap <A-d> δ
+
+" delta
+inoremap <A-D> Δ 
+inoremap <A-g> γ
+ 
+" sigma
+inoremap <A-S> ∑
+inoremap <A-s> σς
+
+" tau!
+inoremap <A-t> τ
+
+" Lambda
+inoremap <A-L> Λ 
+inoremap <A-l> λ
+
+" Mu
+
+inoremap <A-M> Μ 
+inoremap <A-m> μ
+
+" Theta
+inoremap <A-T> Θ 
+inoremap <A-t> θ
+
+" Omega
+inoremap <A-O> Ω 
+inoremap <A-o> ω
+
+" Pi
+inoremap <A-P> Π 
+inoremap <A-p> π
+
+inoremap <A-<> ≤
+inoremap <A->> ≥
+
+" right arrow
+inoremap <A-right> <c-v>u2192
+nmap <A-right> i<A-right><Esc>
 
 
 
