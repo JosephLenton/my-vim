@@ -17,9 +17,8 @@
 "------------------------------------------------------------------------------
 
 if has("win32")
-    "set gfn=Droid\ Sans\ Mono:h11
-    "set gfn+=DejaVu\ Sans\ Mono:h11
-    set gfn=Consolas:h12
+    set gfn=DejaVu\ Sans\ Mono:h11
+    set gfn+=Consolas:h12
 else
     "set guifont=DejaVu\ Sans\ Mono 11
     set guifont=DejaVu\ Sans\ Mono:h11
@@ -41,9 +40,6 @@ endif
 " # Settings
 "
 "------------------------------------------------------------------------------
-
-set encoding=utf-8
-set winaltkeys=no
 
 " auto expand the file menu by default
 let do_syntax_sel_menu=1
@@ -135,57 +131,94 @@ nmap - <Enter>0d<S-L>79i-<Esc>k
 "
 " # Unicode
 "
+" Alt + key, will print out a unicode version. For example Alt + p does pi,
+" and Alt + right does a right arrow.
+"
 "------------------------------------------------------------------------------
+
+set encoding=utf-8
+set winaltkeys=no
 
 " alpha
 inoremap <A-a> α
+nmap <A-a> i<A-a><Esc>
 
 " beta
 inoremap <A-b> β
+nmap <A-b> i<A-b><Esc>
 
 " gamma 
-inoremap <A-d> δ
+inoremap <A-g> δ
+nmap <A-g> i<A-g><Esc>
 
 " delta
-inoremap <A-D> Δ 
 inoremap <A-g> γ
+nmap <A-D> i<A-D><Esc>
+inoremap <A-D> Δ 
+nmap <A-d> i<A-d><Esc>
  
 " sigma
-inoremap <A-S> ∑
 inoremap <A-s> σς
+nmap <A-s> i<A-s><Esc>
+inoremap <A-S> ∑
+nmap <A-S> i<A-S><Esc>
 
 " tau!
 inoremap <A-t> τ
+nmap <A-t> i<A-t><Esc>
 
 " Lambda
-inoremap <A-L> Λ 
 inoremap <A-l> λ
+nmap <A-l> i<A-l><Esc>
+inoremap <A-L> Λ 
+nmap <A-L> i<A-L><Esc>
 
 " Mu
-
-inoremap <A-M> Μ 
 inoremap <A-m> μ
+nmap <A-m> i<A-m><Esc>
+inoremap <A-M> Μ 
+nmap <A-M> i<A-M><Esc>
 
 " Theta
-inoremap <A-T> Θ 
 inoremap <A-t> θ
+nmap <A-t> i<A-t><Esc>
+inoremap <A-T> Θ 
+nmap <A-T> i<A-T><Esc>
 
 " Omega
-inoremap <A-O> Ω 
 inoremap <A-o> ω
+nmap <A-o> i<A-o><Esc>
+inoremap <A-O> Ω 
+nmap <A-O> i<A-O><Esc>
 
 " Pi
-inoremap <A-P> Π 
 inoremap <A-p> π
+nmap <A-p> i<A-p><Esc>
+inoremap <A-P> Π 
+nmap <A-P> i<A-P><Esc>
+
+" comparisons
+
+inoremap <A-=> ≠
+nmap <A-=> i<A-=><Esc>
 
 inoremap <A-<> ≤
+nmap <A-<> i<A-<><Esc>
+
 inoremap <A->> ≥
+nmap <A->> i<A->><Esc>
 
 " right arrow
-inoremap <A-right> <c-v>u2192
+inoremap <A-right> →
 nmap <A-right> i<A-right><Esc>
+inoremap <A-S-right> ⇒
+nmap <A-S-right> i<A-S-right><Esc>
 
-
+" left arrow
+inoremap <A-left> ←
+nmap <A-left> i<A-left><Esc>
+inoremap <A-S-left> ⇐
+nmap <A-S-left> i<A-S-left><Esc>
 
 "------------------------------------------------------------------------------
 " 
