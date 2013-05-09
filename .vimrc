@@ -129,18 +129,14 @@ nmap - <Enter>0d<S-L>79i-<Esc>k
 
 "------------------------------------------------------------------------------
 "
-" # Swap Replaces
+" # change replace letter
 "
-" r and R are swapped, this is because I think replacing a single character is
-" less common than entering replace mode.
-"
-" r - enters replace mode
-" R - enters replace mode for just 1 character
+" r normally replaces just a letter, however I have changed it to 'change
+" word'.
 "
 "------------------------------------------------------------------------------
 
-nnoremap r R
-nnoremap R r
+nnoremap r cw
 
 "------------------------------------------------------------------------------
 "
