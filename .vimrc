@@ -129,6 +129,21 @@ nmap - <Enter>0d<S-L>79i-<Esc>k
 
 "------------------------------------------------------------------------------
 "
+" # Swap Replaces
+"
+" r and R are swapped, this is because I think replacing a single character is
+" less common than entering replace mode.
+"
+" r - enters replace mode
+" R - enters replace mode for just 1 character
+"
+"------------------------------------------------------------------------------
+
+nnoremap r R
+nnoremap R r
+
+"------------------------------------------------------------------------------
+"
 " # Unicode
 "
 " Alt + key, will print out a unicode version. For example Alt + p does pi,
