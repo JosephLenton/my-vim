@@ -86,7 +86,7 @@ hi LineComment    gui=NONE   guifg=#808080   ctermfg=3
 hi DocComment     gui=NONE   guifg=#88FFFF   ctermfg=grey
 hi Constant       gui=NONE   guifg=#CF6A4C   ctermfg=red
 hi String         gui=NONE   guifg=#65B042   ctermfg=green
-hi Error          gui=NONE   guifg=#ffffff   guibg=#6e2e2e ctermfg=white ctermbg=12
+hi Error          gui=NONE   guifg=#ff00aa   guibg=#770000 ctermfg=white ctermbg=12
 hi Identifier     gui=NONE   guifg=#DECF85   ctermfg=13
 hi Number         gui=NONE   guifg=#CF6A4C   ctermfg=12
 hi Ignore         gui=NONE   guifg=#8b8bcd   ctermfg=grey
