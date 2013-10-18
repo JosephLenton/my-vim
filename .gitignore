@@ -7,8 +7,10 @@
 !/.vim/
 
 !.vimrc
-!.greek.js
 !DroidSansMono.ttf
+
+!.greek.js
+!.greek.save.json
 
 !/Documents/
 /Documents/*
