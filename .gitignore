@@ -5,8 +5,10 @@
 
 # but allow this ...
 !/vimfiles/
-
 !/.vim/
 
 !.vimrc
 !DroidSansMono.ttf
+
+!/Documents/WindowsPowerShell/
+
