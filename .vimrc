@@ -191,9 +191,11 @@ nmap <A-m> i<A-m><Esc>
 inoremap <A-M> Μ 
 nmap <A-M> i<A-M><Esc>
 
-" Theta
-inoremap <A-t> θ
+" Tau alt+t
+inoremap <A-t> τ
 nmap <A-t> i<A-t><Esc>
+
+" Theta alt+T
 inoremap <A-T> Θ 
 nmap <A-T> i<A-T><Esc>
 
@@ -353,10 +355,10 @@ nnoremap <A-j> :m+<CR>==
 nnoremap <A-k> :m-2<CR>==
 nnoremap <A-h> <<
 nnoremap <A-l> >>
-inoremap <A-j> <Esc>:m+<CR>==gi
-inoremap <A-k> <Esc>:m-2<CR>==gi
-inoremap <A-h> <Esc><<`]a
-inoremap <A-l> <Esc>>>`]a
+"inoremap <A-j> <Esc>:m+<CR>==gi
+"inoremap <A-k> <Esc>:m-2<CR>==gi
+"inoremap <A-h> <Esc><<`]a
+"inoremap <A-l> <Esc>>>`]a
 vnoremap <A-j> :m'>+<CR>gv=gv
 vnoremap <A-k> :m-2<CR>gv=gv
 vnoremap <A-h> <gv
