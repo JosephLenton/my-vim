@@ -160,17 +160,23 @@ inoremap <A-b> β
 nmap <A-b> i<A-b><Esc>
 
 " gamma 
-inoremap <A-g> δ
+inoremap <A-g> γ
 nmap <A-g> i<A-g><Esc>
+inoremap <A-G> Γ
+nmap <A-G> i<A-G><Esc>
 
 " delta
-inoremap <A-g> γ
-nmap <A-D> i<A-D><Esc>
-inoremap <A-D> Δ 
+inoremap <A-d> δ
 nmap <A-d> i<A-d><Esc>
+inoremap <A-D> Δ
+nmap <A-D> i<A-D><Esc>
+
+" epsilon
+inoremap <A-e> ε
+nmap <A-e> i<A-e><Esc>
  
 " sigma
-inoremap <A-s> σς
+inoremap <A-s> σ
 nmap <A-s> i<A-s><Esc>
 inoremap <A-S> ∑
 nmap <A-S> i<A-S><Esc>
@@ -182,43 +188,60 @@ nmap <A-t> i<A-t><Esc>
 " Lambda
 inoremap <A-l> λ
 nmap <A-l> i<A-l><Esc>
-inoremap <A-L> Λ 
+inoremap <A-L> Λ
 nmap <A-L> i<A-L><Esc>
 
 " Mu
 inoremap <A-m> μ
 nmap <A-m> i<A-m><Esc>
-inoremap <A-M> Μ 
-nmap <A-M> i<A-M><Esc>
 
 " Tau alt+t
 inoremap <A-t> τ
 nmap <A-t> i<A-t><Esc>
 
 " Theta alt+T
-inoremap <A-T> Θ 
+inoremap <A-T> Θ
 nmap <A-T> i<A-T><Esc>
 
 " Omega
 inoremap <A-o> ω
 nmap <A-o> i<A-o><Esc>
-inoremap <A-O> Ω 
+inoremap <A-O> Ω
 nmap <A-O> i<A-O><Esc>
 
 " Pi
 inoremap <A-p> π
 nmap <A-p> i<A-p><Esc>
-inoremap <A-P> Π 
+inoremap <A-P> Π
 nmap <A-P> i<A-P><Esc>
+
+" Phi (f like 'fi')
+inoremap <A-f> φ
+nmap <A-f> i<A-f><Esc>
+inoremap <A-F> Φ
+nmap <A-F> i<A-F><Esc>
+
+" Psi (like a y)
+inoremap <A-y> ψ
+nmap <A-y> i<A-y><Esc>
+inoremap <A-Y> Ψ
+nmap <A-Y> i<A-Y><Esc>
 
 " comparisons
 
-inoremap <A-=> ≠
-nmap <A-=> i<A-=><Esc>
+" alt + ! is not equal
+inoremap <A-1> ≠
+nmap <A-1> i<A-1><Esc>
 
+" alt + = is 'identical equal' (triple equal)
+inoremap <A-=> ≡
+nmap <A-=> i<A-><Esc>
+
+" alt + less than, is less than equal
 inoremap <A-<> ≤
 nmap <A-<> i<A-<><Esc>
 
+" alt + greater than, is greater than equal
 inoremap <A->> ≥
 nmap <A->> i<A->><Esc>
 
