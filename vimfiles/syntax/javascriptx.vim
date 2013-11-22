@@ -50,6 +50,9 @@ syntax region  javaScriptLineComment    contained start=+^\s*\/\/+ skip=+\n\s*\/
 syntax region  javaScriptCvsTag         contained start="\$\cid:" end="\$" oneline
 syntax region  javaScriptComment        contained start="/\*"  end="\*/" contains=@markdownInJS,javaScriptCommentTodo,javaScriptCvsTag,@Spell fold
 
+"matches the following symbols: α β Γ γ δ Δ ω Ω μ τ Θ σ Σ λ Λ π Π Φ φ χ Ψ ψ
+syntax match javaScriptXGreekLetters  contained "\%d945\|\%d946\|\%d915\|\%d947\|\%d948\|\%d916\|\%d969\|\%d937\|\%d956\|\%d964\|\%d920\|\%d963\|\%d931\|\%d955\|\%d923\|\%d960\|\%d928\|\%d934\|\%d966\|\%d967\|\%d936\|\%d968"
+
 "" JSDoc support start
 if !exists("javascript_ignore_javaScriptdoc")
   syntax case ignore
@@ -150,7 +153,7 @@ endif "DOM/HTML/CSS
 
 
 "" Code blocks
-syntax cluster javaScriptAll       contains=@markdownInJS,javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptStringD,javaScriptStringS,javaScriptRegexpString,javaScriptNumber,javaScriptFloat,javaScriptLabel,javaScriptSource,javaScriptType,javaScriptOperator,javaScriptBoolean,javaScriptNull,javaScriptFunction,javaScriptConditional,javaScriptRepeat,javaScriptBranch,javaScriptStatement,javaScriptGlobalObjects,javaScriptExceptions,javaScriptFutureKeys,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation
+syntax cluster javaScriptAll       contains=@markdownInJS,javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptStringD,javaScriptStringS,javaScriptRegexpString,javaScriptXGreekLetters,javaScriptNumber,javaScriptFloat,javaScriptLabel,javaScriptSource,javaScriptType,javaScriptOperator,javaScriptBoolean,javaScriptNull,javaScriptFunction,javaScriptConditional,javaScriptRepeat,javaScriptBranch,javaScriptStatement,javaScriptGlobalObjects,javaScriptExceptions,javaScriptFutureKeys,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation
 syntax region  javaScriptBracket   contained matchgroup=javaScriptBracket transparent start="\[" end="\]" contains=@javaScriptAll,javaScriptParensErrB,javaScriptParensErrC,javaScriptBracket,javaScriptParen,javaScriptBlock,@htmlPreproc
 syntax region  javaScriptParen     contained matchgroup=javaScriptParen   transparent start="("  end=")"  contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrC,javaScriptParen,javaScriptBracket,javaScriptBlock,@htmlPreproc
 syntax region  javaScriptBlock     contained matchgroup=javaScriptBlock   transparent start="{"  end="}"  contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrB,javaScriptParen,javaScriptBracket,javaScriptBlock,@htmlPreproc 
@@ -226,6 +229,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptNull                 Type
   HiLink javaScriptNumber               Number
   HiLink javaScriptFloat                Number
+  HiLink javaScriptXGreekLetters        Number
   HiLink javaScriptBoolean              Boolean
   HiLink javaScriptLabel                Label
   HiLink javaScriptSpecial              Special
