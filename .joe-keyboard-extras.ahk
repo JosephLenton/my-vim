@@ -157,25 +157,25 @@ return
 ; 
 ; ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### #
 
-; disable for League of Legends
-#IfWinActive ahk_class RiotWindowClass
-{
-    ^e::Send ^e
-}
-
+; 
+;       Vim
+; 
 ; ctrl+d -> remaps to 'open context menu'
 #IfWinNotActive ahk_class Vim
 {
-    ^e::Send +{F10}
+    ^d::Send +{F10}
 }
 
+; 
+;       Windows Explorer
+; 
 #IfWinActive ahk_class CabinetWClass
 {
     ; shift+q -> remaps to 'delete'
     ^q:: Send {delete}
 
     ; shift+e -> edit with vim
-    ^d:: Send ^{Tab}+{F10}v
+    ^e:: Send ^{Tab}+{F10}v
 
     ; ctrl+f -> new text file
     ^f:: Send !hn
