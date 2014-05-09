@@ -324,6 +324,7 @@ syn keyword cssAuralAttr contained male female child code digits continuous
 syn match cssAuralAttr contained "\<lower\>"
 
 " cursor
+syn match cssUIProp contained "\<pointer-events\>"
 syn keyword cssUIProp contained cursor
 syn match cssUIAttr contained "\<[ns]\=[ew]\=-resize\>"
 syn keyword cssUIAttr contained crosshair default help move pointer
@@ -355,7 +356,7 @@ syn match cssPseudoClassId contained "\<first\(-\(line\|letter\|child\)\)\=\>"
 syn match cssPseudoClassId contained "\<\(last\|only\|nth\|nth-last\)-child\>"
 syn match cssPseudoClassId contained "\<\(first\|last\|only\|nth\|nth-last\)-of-type\>"
 syn keyword cssPseudoClassId root empty target enable disabled checked not invalid
-syn match cssPseudoClassId contained  "::\(-moz-\)\=selection"
+syn match cssPseudoClassId contained  "::\(-\(webkit\|moz\|o\|ms\)-\)\=selection" 
 
 " Comment
 syn region cssComment start="/\*" end="\*/" contains=@Spell
