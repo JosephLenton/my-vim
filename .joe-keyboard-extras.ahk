@@ -160,10 +160,10 @@ return
 ; 
 ;       Vim
 ; 
-; ctrl+d -> remaps to 'open context menu'
+; ctrl+q -> remaps to 'open context menu'
 #IfWinNotActive ahk_class Vim
 {
-    ^d::Send +{F10}
+    ^q::Send +{F10}
 }
 
 ; 
@@ -171,16 +171,32 @@ return
 ; 
 #IfWinActive ahk_class CabinetWClass
 {
-    ; shift+q -> remaps to 'delete'
+    ; ctrl+p -> open powershell in the current folder
+    ^p:: 
+    {
+        ; backup the old contents of the clipboard, and restore it when we are done
+        ClipSaved := ClipboardAll
+
+        ; copies the address out from explorer
+        ; and leaves you in the file list
+        Send ^l^c{Tab}{Tab}{Tab}
+        ClipWait, 2
+        Run powershell, %Clipboard%
+
+        Clipboard := ClipSaved
+        ClipSaved :=            ; set the temperary variable to no data
+    }
+
+    ; ctrl+q -> remaps to 'delete'
     ^q:: Send {delete}
 
-    ; shift+e -> edit with vim
+    ; ctrl+e -> edit with vim
     ^e:: Send ^{Tab}+{F10}v
 
     ; ctrl+f -> new text file
     ^f:: Send !hn
 
-    ; shift+r -> create new blank text file
+    ; ctrl+r -> create new blank text file
     ^r:: Send !hw{up}{up}{up}{enter}
 }
 
