@@ -75,7 +75,8 @@ hi Folded         gui=NONE   guifg=#cfcfcd   guibg=#4b208f
 hi FoldColumn     gui=NONE   guifg=#8b8bcd   guibg=#2e2e2e
 
 hi Directory      gui=NONE   guifg=#00ff8b   
-hi LineNr         gui=NONE   guifg=#8A8A8A   guibg=#2E3436 ctermfg=yellow
+"hi LineNr         gui=NONE   guifg=#8A8A8A   guibg=#2E3436 ctermfg=yellow
+hi LineNr         gui=NONE   guifg=#8A8A8A   ctermfg=yellow
 hi NonText        gui=BOLD   guifg=#8b8bcd   
 hi SpecialKey     gui=BOLD   guifg=#ab60ed   
 hi Title          gui=BOLD   guifg=#af4f4b   
