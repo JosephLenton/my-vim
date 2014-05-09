@@ -28,8 +28,9 @@ if has("win32")
     set gfn=DejaVu\ Sans\ Mono:h11
     set gfn+=Consolas:h12
 else
-    "set guifont=DejaVu\ Sans\ Mono 11
-    set guifont=DejaVu\ Sans\ Mono:h11
+    set guifont=DejaVu\ Sans\ Mono\ 11
+    set guifont+=Droid\ Sans\ Mono\ 11
+    set guifont+=Monodpace\ 11
 endif
 
 color joe
