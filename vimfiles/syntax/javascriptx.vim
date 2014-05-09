@@ -86,10 +86,9 @@ syntax keyword javaScriptPrototype      contained prototype
 
 "" Programm Keywords
 syntax keyword javaScriptSource         contained import export
-syntax keyword javaScriptType           contained const this undefined var void yield window document
+syntax keyword javaScriptType           contained const var void yield 
+syntax keyword javaScriptConsts         contained this false this undefined null arguments window document true false
 syntax keyword javaScriptOperator       contained delete new in instanceof let typeof
-syntax keyword javaScriptBoolean        contained true false
-syntax keyword javaScriptNull           contained null
 
 "" Statement Keywords
 syntax keyword javaScriptConditional    contained if else
@@ -153,7 +152,7 @@ endif "DOM/HTML/CSS
 
 
 "" Code blocks
-syntax cluster javaScriptAll       contains=@markdownInJS,javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptStringD,javaScriptStringS,javaScriptRegexpString,javaScriptXGreekLetters,javaScriptNumber,javaScriptFloat,javaScriptLabel,javaScriptSource,javaScriptType,javaScriptOperator,javaScriptBoolean,javaScriptNull,javaScriptFunction,javaScriptConditional,javaScriptRepeat,javaScriptBranch,javaScriptStatement,javaScriptGlobalObjects,javaScriptExceptions,javaScriptFutureKeys,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation
+syntax cluster javaScriptAll       contains=@markdownInJS,javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptStringD,javaScriptStringS,javaScriptRegexpString,javaScriptXGreekLetters,javaScriptNumber,javaScriptFloat,javaScriptLabel,javaScriptSource,javaScriptType,javaScriptConsts,javaScriptOperator,javaScriptFunction,javaScriptConditional,javaScriptRepeat,javaScriptBranch,javaScriptStatement,javaScriptGlobalObjects,javaScriptExceptions,javaScriptFutureKeys,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation
 syntax region  javaScriptBracket   contained matchgroup=javaScriptBracket transparent start="\[" end="\]" contains=@javaScriptAll,javaScriptParensErrB,javaScriptParensErrC,javaScriptBracket,javaScriptParen,javaScriptBlock,@htmlPreproc
 syntax region  javaScriptParen     contained matchgroup=javaScriptParen   transparent start="("  end=")"  contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrC,javaScriptParen,javaScriptBracket,javaScriptBlock,@htmlPreproc
 syntax region  javaScriptBlock     contained matchgroup=javaScriptBlock   transparent start="{"  end="}"  contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrB,javaScriptParen,javaScriptBracket,javaScriptBlock,@htmlPreproc 
@@ -226,11 +225,10 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptParensErrC           Error
   HiLink javaScriptOperator             Operator
   HiLink javaScriptType                 Type
-  HiLink javaScriptNull                 Type
   HiLink javaScriptNumber               Number
   HiLink javaScriptFloat                Number
+  HiLink javaScriptConsts               Number
   HiLink javaScriptXGreekLetters        Number
-  HiLink javaScriptBoolean              Boolean
   HiLink javaScriptLabel                Label
   HiLink javaScriptSpecial              Special
   HiLink javaScriptSource               Special
