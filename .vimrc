@@ -16,6 +16,14 @@
 "
 "------------------------------------------------------------------------------
 
+" join Vim's copy/paste buffer to the OS clipboard, so they are one
+if has("win32")
+    set clipboard=unnamed
+else
+    set clipboard=unnamedplus
+endif
+
+" set the default Font; syntax depends on the OS
 if has("win32")
     set gfn=DejaVu\ Sans\ Mono:h11
     set gfn+=Consolas:h12
@@ -71,6 +79,9 @@ set shiftwidth=4
 set expandtab
 set nowrap
 set spelllang=en_gb
+
+set relativenumber
+set numberwidth=10
 
 " disable the (annoying) swap files you get with vim
 set noswapfile
