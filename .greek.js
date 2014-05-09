@@ -1,7 +1,6 @@
 "use strict";
 
 greek.
-        openProjectsBar().
         setDefaultFolder( 'c:\\users\\joseph\\projects' ).
         openWith( 'html', 'gvim', 'chrome' ).
         openWith( 'hta', 'gvim', null ).
