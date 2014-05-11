@@ -3,8 +3,11 @@
 "
 "       .vimrc
 "
+" @author Joseph Lenton
+"
 " My own .vimrc settings. It aims to be independant of the plugins also
-" included, so this could be used without them.
+" included, so this could be used without them (although that isn't 
+" guaranteed).
 "
 "==============================================================================
 
@@ -30,17 +33,17 @@ if has("win32")
 else
     set guifont=DejaVu\ Sans\ Mono\ 11
     set guifont+=Droid\ Sans\ Mono\ 11
-    set guifont+=Monodpace\ 11
+    set guifont+=Monospace\ 11
 endif
 
 color joe
 
-if has('win32') || has('win64')
-    " offer both Win & Unix user vimfile locations 
-    set runtimepath^=~/vimfiles
-    set runtimepath^=~/.vim
+" offer both Win & Unix user vimfile locations 
+set runtimepath^=~/vimfiles
+set runtimepath^=~/.vim
 
-    " hitting ctrl+z opens powershell
+" hitting ctrl+z opens powershell, on Windows
+if has('win32') || has('win64')
     nmap <C-Z> :silent !powershell<CR>
 endif
 
