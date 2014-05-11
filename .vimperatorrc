@@ -1,0 +1,83 @@
+
+" maps showing navigation bar to F2
+map <silent> <F2> :js toggleNavigationBar()<CR>
+
+:js << EOF
+    function toggleNavigationBar() {
+        var nb = document.getElementById('nav-bar');
+
+        var tab = document.querySelector(".tabbrowser-tabs");
+        if (nb) {
+            var hide = nb.style.visibility = (nb.style.visibility == '');
+
+            if ( hide ) {
+                nb.style.visibility = 'collapse';
+                nb.style.overflow = 'hidden';
+
+                if ( tab ) {
+                    tab.style.borderBottom = '1px solid #888';
+                }
+            } else {
+                nb.style.visibility = '';
+                nb.style.overflow = '';
+
+                if ( tab ) {
+                    tab.style.borderBottom = '';
+                }
+            }
+        }
+    }
+
+    toggleNavigationBar();
+EOF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
