@@ -15,44 +15,63 @@
 "------------------------------------------------------------------------------
 
 set title
+
 autocmd BufEnter * call PrettyProjectFileTitles#updateTitle()
+autocmd CursorMoved,CursorMovedI * call PrettyProjectFileTitles#updateModified()
+
+let b:newTitle = ""
+let b:titleModified = ""
 
 function PrettyProjectFileTitles#updateTitle()
-    let l:newTitle = ""
+    let b:newTitle = ""
 
     if ( expand("%:p:h") == $HOME )
-        let l:newTitle = "~"
+        let b:newTitle = "~"
     else
         let l:oldCD = getcwd()
 
         if ( isdirectory($HOME . "/projects/") )
             cd ~/projects/
-            let l:newTitle = expand("%:h")
+            let b:newTitle = expand("%:h")
             cd `=l:oldCD`
         endif
 
         if (                                                                
 \               ( isdirectory($HOME . "/projects/") == 0 ) ||               
-\               ( matchstr(l:newTitle, "^\\") == "\\"    ) ||               
-\               ( matchstr(l:newTitle, "^/" ) == "/"     )                  
+\               ( matchstr(b:newTitle, "^\\") == "\\"    ) ||               
+\               ( matchstr(b:newTitle, "^/" ) == "/"     )                  
 \       )
             cd ~
-            let l:newTitle = expand("%:h")
+            let b:newTitle = expand("%:h")
             cd `=l:oldCD`
 
             if ( has("win32") || has("win64") )
-                if ( matchstr(l:newTitle, "^\\") == "" )
-                    let l:newTitle = "~\\" . l:newTitle
+                if ( matchstr(b:newTitle, "^\\") == "" )
+                    let b:newTitle = "~\\" . b:newTitle
                 endif
             else
-                if ( matchstr(l:newTitle, "^/" ) == "" )
-                    let l:newTitle = "~\\" . l:newTitle
+                if ( matchstr(b:newTitle, "^/" ) == "" )
+                    let b:newTitle = "~\\" . b:newTitle
                 endif
             endif
         endif
     endif
 
-    let &titlestring = l:newTitle . "        " . expand("%:t")
+    call PrettyProjectFileTitles#refreshTitle()
+endfunction
+
+function PrettyProjectFileTitles#updateModified()
+    if ( &modified )
+        let b:titleModified = "*"
+    else
+        let b:titleModified = " "
+    endif
+
+    call PrettyProjectFileTitles#refreshTitle()
+endfunction
+
+function PrettyProjectFileTitles#refreshTitle()
+    let &titlestring = b:newTitle . "        " . expand("%:t") . b:titleModified
 endfunction
 
 
