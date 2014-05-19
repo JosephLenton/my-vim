@@ -200,25 +200,6 @@ return
     ^r:: Send !hw{up}{up}{up}{enter}
 }
 
-#If WinActive("ahk_class MozillaWindowClass") || WinActive("HexChat") || WinActive("ahk_class Chrome_WidgetWin_1")
-{
-    ; vim-ish movement for navigating text
-    !h:: Send {home}
-    !l:: Send {end}
-    !j:: Send ^{left}
-    !k:: Send ^{right}
-
-    ; the same again, with shift select, for selections
-    +!h:: Send +{home}
-    +!l:: Send +{end}
-    +!j:: Send +^{left}
-    +!k:: Send +^{right}
-
-    ; alt+backspace, deletes everything to the home
-    !backspace:: Send +{home}{delete}
-    +!backspace:: Send +{end}{delete}
-}
-
 ; adds 'get url'
 #IfWinActive ahk_class MozillaWindowClass
 {
