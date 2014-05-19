@@ -3,11 +3,8 @@
 "
 "       .vimrc
 "
-" @author Joseph Lenton
-"
 " My own .vimrc settings. It aims to be independant of the plugins also
-" included, so this could be used without them (although that isn't 
-" guaranteed).
+" included, so this could be used without them.
 "
 "==============================================================================
 
@@ -36,16 +33,17 @@ else
     set guifont+=Monospace\ 11
 endif
 
-color joe
+" offer UNIX vim locations on Windows
+if has('win32') || has('win64')
+  set runtimepath^=$HOME/.vim,$HOME/.vim/colors,$HOME/.vim/syntax,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+endif
 
-" offer both Win & Unix user vimfile locations 
-set runtimepath^=~/vimfiles
-set runtimepath^=~/.vim
-
-" hitting ctrl+z opens powershell, on Windows
+" hitting ctrl+z opens powershell
 if has('win32') || has('win64')
     nmap <C-Z> :silent !powershell<CR>
 endif
+
+color joe
 
 "------------------------------------------------------------------------------
 "
@@ -128,12 +126,15 @@ endif
 runtime plugin/matchparen.vim
 DoMatchParen
 
+" Column scroll-binding on <leader>sb
+noremap z :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR>
+
 "
 " # NerdTREE Settings
 "
 
 " z - toggles NERD Tree open / closed
-nmap z :silent NERDTreeToggle<CR>
+nmap <silent> <leader>z :silent NERDTreeToggle<CR>
 
 " closes NERD Tree, if it's the last buffer open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
