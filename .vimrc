@@ -43,6 +43,7 @@ if has('win32') || has('win64')
     nmap <C-Z> :silent !powershell<CR>
 endif
 
+" use my own colour scheme, which I designed : D
 color joe
 
 "------------------------------------------------------------------------------
@@ -62,6 +63,7 @@ end
 
 " Remove menu bar
 set guioptions-=T
+set guioptions-=m
 
 cd ~
 set autochdir
@@ -91,6 +93,8 @@ set noswapfile
 " allows me to walk anywhere on the screen
 set virtualedit=block
 
+
+
 "------------------------------------------------------------------------------
 "
 " # Pathogen, vim auto-loader
@@ -114,6 +118,8 @@ au BufNewFile,BufRead *.jsx set filetype=javascriptx
 au BufNewFile,BufRead *.ts  set filetype=typescript
 au BufNewFile,BufRead *.pro set filetype=prolog
 
+
+
 "------------------------------------------------------------------------------
 "
 " Bracket Matching Highlighting
@@ -129,9 +135,11 @@ DoMatchParen
 " Column scroll-binding on <leader>sb
 noremap z :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR>
 
+"------------------------------------------------------------------------------
 "
 " # NerdTREE Settings
 "
+"------------------------------------------------------------------------------
 
 " z - toggles NERD Tree open / closed
 nmap <silent> <leader>z :silent NERDTreeToggle<CR>
@@ -144,6 +152,38 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 nmap = <Enter>0d<S-L>79i=<Esc>k
 nmap - <Enter>0d<S-L>79i-<Esc>k
 
+
+
+"------------------------------------------------------------------------------
+" 
+" Enable Airline
+"
+" I was not fully taken with airline, so it's currently disabled. Will make 
+" more sense if I open multiple files within the same vim instance.
+"
+" Until then, I will leave this commented out.
+"
+"------------------------------------------------------------------------------
+
+"set laststatus=2
+"let g:airline#extensions#tagbar#enabled = 1
+
+
+
+"------------------------------------------------------------------------------
+" 
+" # Change title to a more pretty variant
+"
+" It is changed to:
+"       ~\current\localized\dir\    filename
+"
+"------------------------------------------------------------------------------
+
+set title
+autocmd BufEnter * let &titlestring=expand("%:h") . "\\        " . expand("%:t")
+
+
+
 "------------------------------------------------------------------------------
 "
 " # change replace letter
@@ -154,6 +194,70 @@ nmap - <Enter>0d<S-L>79i-<Esc>k
 "------------------------------------------------------------------------------
 
 nnoremap r cw
+
+
+
+"------------------------------------------------------------------------------
+"
+" # inoremappings!
+"
+"------------------------------------------------------------------------------
+
+" # s-space writes an underscore
+
+inoremap <S-Space> _
+
+
+
+" # Swap numbers and symbols round on the top row.
+
+" 
+" Map each number to its shift-key character.
+"
+" Except for you Mr Pound, you never get used in vim!
+" Instead the £ key is used for mapping to 'down and enter', which is for
+" autocompletion
+"
+inoremap 1 !
+inoremap 2 "
+inoremap 3 <Down><Enter> 
+inoremap 4 $
+inoremap 5 %
+inoremap 6 ^
+inoremap 7 &
+inoremap 8 *
+inoremap 9 (
+inoremap 0 )
+
+" and then the opposite
+inoremap ! 1
+inoremap " 2
+inoremap £ 3
+inoremap $ 4
+inoremap % 5
+inoremap ^ 6
+inoremap & 7
+inoremap * 8
+inoremap ( 9
+inoremap ) 0
+
+
+
+" # Insert mode h/j/k/l movement
+
+inoremap <C-k> <up>
+inoremap <C-j> <down>
+inoremap <C-h> <left>
+inoremap <C-l> <right>
+
+
+
+" # Insert mode backspace and new lines
+
+inoremap <S-Enter> <C-o><S-Enter>i
+inoremap <c-y> <BS>
+inoremap <c-u> <Enter>
+inoremap <c-s-u> <S-Enter>
 
 "------------------------------------------------------------------------------
 "
@@ -315,19 +419,6 @@ noremap <c-s-j> :call <SID>swap_down()<CR>
 
 
 "------------------------------------------------------------------------------
-"
-" # Insert mode h/j/k/l movement
-"
-"------------------------------------------------------------------------------
-
-inoremap <c-k> <up>
-inoremap <c-j> <down>
-inoremap <c-h> <left>
-inoremap <c-l> <right>
-
-
-
-"------------------------------------------------------------------------------
 " 
 " # Easier window navigation
 "
@@ -370,8 +461,6 @@ nmap <c-b> :b#<cr>
 " This mapping changes that, so it will move down a 'screen line' instead of a 'text line'.
 nmap j gj
 nmap k gk
-
-
 
 "------------------------------------------------------------------------------
 "
