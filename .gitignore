@@ -8,9 +8,14 @@
 !.vimrc
 !/.vim/
 
+/.vim/.netrwhist
+
 # vimperator for FireFox
 !.vimperatorrc
 !/vimperator/
+
+/vimperator/default/history-command
+/vimperator/default/history-search
 
 # my mono font
 !DroidSansMono.ttf
@@ -30,3 +35,4 @@
 # bash settings
 !.bashrc
 
+vimperator/info/default/history-search
