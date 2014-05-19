@@ -2,20 +2,31 @@
 # exclude everything
 /*
 
-# but allow this ...
-!/vimfiles/
+# but allow these ...
+
+# vim files
+!.vimrc
 !/.vim/
 
-!.vimrc
+# vimperator for FireFox
 !.vimperatorrc
+!/vimperator/
+
+# my mono font
 !DroidSansMono.ttf
 
+# greek stuff
 !.greek.js
 !.greek.save.json
 
+# auto-it key bindings
 !.joe-keyboard-extras.ahk
 
+# my powershell settings
 !/Documents/
 /Documents/*
 !/Documents/WindowsPowerShell/
+
+# bash settings
+!.bashrc
 
