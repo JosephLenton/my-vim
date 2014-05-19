@@ -65,7 +65,11 @@ end
 set guioptions-=T
 set guioptions-=m
 
-cd ~
+if ( isdirectory($HOME . "/projects") )
+    cd ~/projects
+else
+    cd ~
+endif
 set autochdir
 
 set nocompatible
@@ -167,20 +171,6 @@ nmap - <Enter>0d<S-L>79i-<Esc>k
 
 "set laststatus=2
 "let g:airline#extensions#tagbar#enabled = 1
-
-
-
-"------------------------------------------------------------------------------
-" 
-" # Change title to a more pretty variant
-"
-" It is changed to:
-"       ~\current\localized\dir\    filename
-"
-"------------------------------------------------------------------------------
-
-set title
-autocmd BufEnter * let &titlestring=expand("%:h") . "\\        " . expand("%:t")
 
 
 
