@@ -25,11 +25,20 @@ let b:titleModified = ""
 function PrettyProjectFileTitles#updateTitle()
     let b:newTitle = ""
 
-    if ( expand("%:p:h") == $HOME )
+    " help section
+    if (
+\           expand("%:p:h") == ($VIMRUNTIME . "\\doc") ||
+\           expand("%:p:h") == ($VIMRUNTIME .  "/doc")
+\   )
+        let b:newTitle = "help "
+
+    " something under home
+    elseif ( expand("%:p:h") == $HOME )
         let b:newTitle = "~"
     else
         let l:oldCD = getcwd()
 
+        " something under ~/projects
         if ( isdirectory($HOME . "/projects/") )
             cd ~/projects/
             let b:newTitle = expand("%:h")
@@ -78,7 +87,9 @@ function PrettyProjectFileTitles#refreshModified()
 endfunction
 
 function PrettyProjectFileTitles#showChanges()
-    let &titlestring = b:newTitle . "        " . expand("%:t") . b:titleModified
+    if ( exists("b:newTitle") && exists("b:titleModified") )
+        let &titlestring = b:newTitle . "        " . expand("%:t") . b:titleModified
+    endif
 endfunction
 
 
