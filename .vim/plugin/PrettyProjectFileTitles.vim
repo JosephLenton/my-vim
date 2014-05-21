@@ -16,8 +16,8 @@
 
 set title
 
-autocmd BufEnter * call PrettyProjectFileTitles#updateTitle()
-autocmd CursorMoved,CursorMovedI * call PrettyProjectFileTitles#updateModified()
+autocmd BufEnter * call PrettyProjectFileTitles#refreshTitle()
+autocmd CursorMoved,CursorMovedI,BufWritePost * call PrettyProjectFileTitles#refreshModified()
 
 let b:newTitle = ""
 let b:titleModified = ""
@@ -56,8 +56,6 @@ function PrettyProjectFileTitles#updateTitle()
             endif
         endif
     endif
-
-    call PrettyProjectFileTitles#refreshTitle()
 endfunction
 
 function PrettyProjectFileTitles#updateModified()
@@ -66,11 +64,20 @@ function PrettyProjectFileTitles#updateModified()
     else
         let b:titleModified = " "
     endif
-
-    call PrettyProjectFileTitles#refreshTitle()
 endfunction
 
 function PrettyProjectFileTitles#refreshTitle()
+    call PrettyProjectFileTitles#updateTitle()
+    call PrettyProjectFileTitles#updateModified()
+    call PrettyProjectFileTitles#showChanges()
+endfunction
+
+function PrettyProjectFileTitles#refreshModified()
+    call PrettyProjectFileTitles#updateModified()
+    call PrettyProjectFileTitles#showChanges()
+endfunction
+
+function PrettyProjectFileTitles#showChanges()
     let &titlestring = b:newTitle . "        " . expand("%:t") . b:titleModified
 endfunction
 
