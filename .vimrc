@@ -208,6 +208,7 @@ inoremap <S-Space> _
 " Instead the £ key is used for mapping to 'down and enter', which is for
 " autocompletion
 "
+
 inoremap 1 !
 inoremap 2 "
 inoremap 3 <Down><Enter> 
@@ -255,7 +256,6 @@ cnoremap & 7
 cnoremap * 8
 cnoremap ( 9
 cnoremap ) 0
-
 
 
 
