@@ -231,6 +231,32 @@ inoremap * 8
 inoremap ( 9
 inoremap ) 0
 
+" this is for it working on the command line too
+" (when you hit : to type a command)
+cnoremap 1 !
+cnoremap 2 "
+cnoremap 3 <Down><Enter> 
+cnoremap 4 $
+cnoremap 5 %
+cnoremap 6 ^
+cnoremap 7 &
+cnoremap 8 *
+cnoremap 9 (
+cnoremap 0 )
+
+" and then the opposite
+cnoremap ! 1
+cnoremap " 2
+cnoremap £ 3
+cnoremap $ 4
+cnoremap % 5
+cnoremap ^ 6
+cnoremap & 7
+cnoremap * 8
+cnoremap ( 9
+cnoremap ) 0
+
+
 
 
 " # Insert mode h/j/k/l movement
