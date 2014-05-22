@@ -88,7 +88,7 @@ endfunction
 
 function PrettyProjectFileTitles#showChanges()
     if ( exists("b:newTitle") && exists("b:titleModified") )
-        let &titlestring = b:newTitle . "        " . expand("%:t") . b:titleModified
+        let &titlestring = expand("%:t") . b:titleModified . "        " . b:newTitle
     endif
 endfunction
 
