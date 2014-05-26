@@ -6,6 +6,7 @@
 " 
 
 set background=dark
+
 hi clear
 if exists("syntax_on")
 	syntax reset
@@ -51,7 +52,7 @@ hi Question       gui=BOLD   guifg=#ffcd00
 
 hi StatusLine     gui=BOLD   guifg=#b9b9b9   guibg=#3e3e5e
 hi StatusLineNC   gui=NONE   guifg=#b9b9b9   guibg=#3e3e5e
-hi VertSplit      gui=NONE   guifg=#b9b9b9   guibg=#3e3e5e
+hi VertSplit      gui=NONE   guifg=#4a4a4a
 
 hi WildMenu       gui=BOLD   guifg=#eeeeee   guibg=#6e6eaf
 
@@ -75,8 +76,8 @@ hi Folded         gui=NONE   guifg=#cfcfcd   guibg=#4b208f
 hi FoldColumn     gui=NONE   guifg=#8b8bcd   guibg=#2e2e2e
 
 hi Directory      gui=NONE   guifg=#00ff8b   
-"hi LineNr         gui=NONE   guifg=#8A8A8A   guibg=#2E3436 ctermfg=yellow
 hi LineNr         gui=NONE   guifg=#8A8A8A   ctermfg=yellow
+hi CursorLineNr   term=bold ctermfg=Yellow gui=bold guifg=#9A9A9A
 hi NonText        gui=BOLD   guifg=#8b8bcd   
 hi SpecialKey     gui=BOLD   guifg=#ab60ed   
 hi Title          gui=BOLD   guifg=#af4f4b   
