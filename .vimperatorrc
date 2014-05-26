@@ -2,7 +2,7 @@
 " maps showing navigation bar to F2
 map <silent> <F2> :js toggleNavigationBar()<CR>
 
-:js << EOF
+:js << EOJS
     function toggleNavigationBar() {
         var nb = document.getElementById('nav-bar');
 
@@ -28,56 +28,17 @@ map <silent> <F2> :js toggleNavigationBar()<CR>
         }
     }
 
+    " hide the navigation bar
     toggleNavigationBar();
-EOF
 
+    " This fixes a bug where on the first time FF gets opened it will give the
+    " navigation bar focus, even though we hid it above.
+    var textbox = document.querySelector('#nav-bar textbox');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    if ( textbox ) {
+        textbox.blur();
+    }
+EOJS
 
 
 
