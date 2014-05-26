@@ -92,6 +92,9 @@ set incsearch
 set relativenumber
 set numberwidth=10
 
+" sets spaces to the vertical window splits
+set fillchars+=vert:\  
+
 " disable the (annoying) swap files you get with vim
 set noswapfile
 
@@ -119,9 +122,18 @@ filetype plugin on
 
 set ofu=syntaxcomplete#Complete
 
+
+
+"------------------------------------------------------------------------------
+" 
+" # Syntax highlighting for new file types
+"
+"------------------------------------------------------------------------------
+
 au BufNewFile,BufRead *.jsx set filetype=javascriptx
 au BufNewFile,BufRead *.ts  set filetype=typescript
 au BufNewFile,BufRead *.pro set filetype=prolog
+au BufNewFile,BufRead *.vimperatorrc set filetype=vim
 
 
 
