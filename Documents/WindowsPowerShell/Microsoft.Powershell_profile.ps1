@@ -4,7 +4,7 @@ set-alias ss select-string
 $global:__lastFile = $null
 
 function ssearch ([string]$text) {
-    $files = select-string $text *.php, *.java, *.cs, *.js, *.jsx, *.json, *.ts, *.txt, *.md, *.html, *.htm, *.hta, *.xhtml, *.xhtm, *.vbs, *.vb, *.css, *.less, *.sass, *.xml, *.rb, *.qb, *.pl, *.pro, *.tcl, *.vim, *.vimrc
+    $files = select-string $text *.c, *.h, *.cpp, *.php, *.java, *.cs, *.js, *.jsx, *.json, *.ts, *.txt, *.md, *.html, *.htm, *.hta, *.xhtml, *.xhtm, *.vbs, *.vb, *.css, *.less, *.sass, *.xml, *.yaml, *.rb, *.qb, *.pl, *.pro, *.tcl, *.awk, *.sh, *.vim, *.vimrc
 
     if ( $files.length -gt 0 ) {
         $global:__lastFile = $files[0]
