@@ -28,11 +28,11 @@ map <silent> <F2> :js toggleNavigationBar()<CR>
         }
     }
 
-    " hide the navigation bar
+    // hide the navigation bar
     toggleNavigationBar();
 
-    " This fixes a bug where on the first time FF gets opened it will give the
-    " navigation bar focus, even though we hid it above.
+    // This fixes a bug where on the first time FF gets opened it will give the
+    // navigation bar focus, even though we hid it above.
     var textbox = document.querySelector('#nav-bar textbox');
 
     if ( textbox ) {
@@ -42,3 +42,17 @@ EOJS
 
 
 
+"
+" :downloads bugfix
+"
+js <<EOF
+    commands._exCommands = commands._exCommands.filter(function (cmd) !cmd.hasName("downloads"));
+    commands.add(["downl[oads]", "dl"],
+        "Show progress of current downloads (fixed)",
+        function () {
+            liberator.open("chrome://browser/content/downloads/contentAreaDownloadsView.xul",
+                { from: "downloads"});
+        },
+        { argCount: "0" },
+        true);
+EOF
