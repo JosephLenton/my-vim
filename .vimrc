@@ -152,6 +152,18 @@ DoMatchParen
 " Column scroll-binding on <leader>sb
 noremap z :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR>
 
+
+
+"------------------------------------------------------------------------------
+" 
+" # Auto-run make for .jsx files
+"
+"------------------------------------------------------------------------------
+
+call FindMake#runOnSave( "*.jsx" )
+
+
+
 "------------------------------------------------------------------------------
 "
 " # NerdTREE Settings
