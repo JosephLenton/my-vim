@@ -130,6 +130,7 @@ set ofu=syntaxcomplete#Complete
 "
 "------------------------------------------------------------------------------
 
+au BufNewFile,BufRead *.bb  set filetype=bb
 au BufNewFile,BufRead *.jsx set filetype=javascriptx
 au BufNewFile,BufRead *.ts  set filetype=typescript
 au BufNewFile,BufRead *.pro set filetype=prolog
