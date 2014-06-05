@@ -12,12 +12,6 @@
 
 # vimperator for FireFox
 !.vimperatorrc
-!/vimperator/
-
-# hide these files which just store history
-/vimperator/info/default/history-command
-/vimperator/info/default/history-search
-/vimperator/info/default/local-marks
 
 # my mono font
 !DroidSansMono.ttf
