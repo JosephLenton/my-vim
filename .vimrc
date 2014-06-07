@@ -219,12 +219,6 @@ nnoremap r cw
 "
 "------------------------------------------------------------------------------
 
-" # s-space writes an underscore
-
-inoremap <S-Space> _
-
-
-
 " # Insert mode h/j/k/l movement
 
 inoremap <C-k> <up>
@@ -240,6 +234,8 @@ inoremap <S-Enter> <C-o><S-Enter>i
 inoremap <c-y> <BS>
 inoremap <c-u> <Enter>
 inoremap <c-s-u> <S-Enter>
+
+
 
 "------------------------------------------------------------------------------
 "
