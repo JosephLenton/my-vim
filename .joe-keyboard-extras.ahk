@@ -6,6 +6,14 @@
 ;------------------------------------------------------------------------------
 
 ; 
+; Start + v shows the all-apps tab
+; 
+#v:: 
+    Send {LWin}
+    Send ^{Tab}
+    return
+
+; 
 ;       Vim
 ; 
 ; ctrl+q -> remaps to 'open context menu'
