@@ -152,7 +152,7 @@ endif "DOM/HTML/CSS
 
 
 "" Code blocks
-syntax cluster javaScriptAll       contains=@markdownInJS,javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptStringD,javaScriptStringS,javaScriptRegexpString,javaScriptXGreekLetters,javaScriptNumber,javaScriptFloat,javaScriptLabel,javaScriptSource,javaScriptType,javaScriptConsts,javaScriptOperator,javaScriptFunction,javaScriptConditional,javaScriptRepeat,javaScriptBranch,javaScriptStatement,javaScriptGlobalObjects,javaScriptExceptions,javaScriptFutureKeys,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation
+syntax cluster javaScriptAll       contains=@markdownInJS,javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptStringD,javaScriptStringS,javaScriptRegexpString,javaScriptXConcealOperators,javaScriptNumber,javaScriptFloat,javaScriptLabel,javaScriptSource,javaScriptType,javaScriptConsts,javaScriptOperator,javaScriptFunction,javaScriptConditional,javaScriptRepeat,javaScriptBranch,javaScriptStatement,javaScriptXSymbol,javaScriptXGreekLetters,javaScriptGlobalObjects,javaScriptExceptions,javaScriptFutureKeys,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation
 syntax region  javaScriptBracket   contained matchgroup=javaScriptBracket transparent start="\[" end="\]" contains=@javaScriptAll,javaScriptParensErrB,javaScriptParensErrC,javaScriptBracket,javaScriptParen,javaScriptBlock,@htmlPreproc
 syntax region  javaScriptParen     contained matchgroup=javaScriptParen   transparent start="("  end=")"  contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrC,javaScriptParen,javaScriptBracket,javaScriptBlock,@htmlPreproc
 syntax region  javaScriptBlock     contained matchgroup=javaScriptBlock   transparent start="{"  end="}"  contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrB,javaScriptParen,javaScriptBracket,javaScriptBlock,@htmlPreproc 
@@ -168,6 +168,23 @@ if main_syntax == "javascrptx"
   syntax sync ccomment javaScriptComment minlines=200
   syntax sync match javaScriptHighlight grouphere javaScriptBlock /{/
 endif
+
+syntax match javaScriptXConcealOperators   "<-\ze[^-]" conceal cchar=←
+syntax match javaScriptXConcealOperators   "->" conceal cchar=→
+syntax match javaScriptXConcealOperators   "\<sum\>" conceal cchar=∑
+"syntax match javaScriptXConcealOperators   "\<product\>" conceal cchar=∏
+syntax match javaScriptXConcealOperators   "\<sqrt\>" conceal cchar=√
+syntax match javaScriptXConcealOperators   "\<pi\>" conceal cchar=π
+syntax match javaScriptXConcealOperators   "===\ze[^=]" conceal cchar=≡
+syntax match javaScriptXConcealOperators   "!=\ze[^=]" conceal cchar=≠
+syntax match javaScriptXConcealOperators   "!==\ze[^=]" conceal cchar=≠
+syntax match javaScriptXConcealOperators   ">>" conceal cchar=»
+syntax match javaScriptXConcealOperators   "<=" conceal cchar=≤
+syntax match javaScriptXConcealOperators   ">=" conceal cchar=≥
+syntax match javaScriptXConcealOperators   "&&" conceal cchar=∧
+syntax match javaScriptXConcealOperators   "||" conceal cchar=∨
+
+syntax match javaScriptXSymbol contained "\%d955\|\%d8592\|\%d8594\|\%d8721\|\%d8719\|\%d8730\|\%d960\|\%d8801\|\%d8800\|\%d8800\|\%d187\|\%d8804\|\%d8805\|\%d8743\|\%d8744"
 
 "" Fold control
 if exists("b:javascript_fold")
@@ -200,6 +217,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   else
     command -nargs=+ HiLink hi def link <args>
   endif
+
   HiLink javaScriptComment              Comment
   HiLink javaScriptLineComment          Comment
   HiLink javaScriptDocComment           Comment
@@ -224,6 +242,8 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptParensErrB           Error
   HiLink javaScriptParensErrC           Error
   HiLink javaScriptOperator             Operator
+  HiLink javaScriptXConcealOperators    Operator
+  HiLink javaScriptXSymbol              Symbol
   HiLink javaScriptType                 Type
   HiLink javaScriptNumber               Number
   HiLink javaScriptFloat                Number
@@ -246,8 +266,12 @@ if version >= 508 || !exists("did_javascript_syn_inits")
 
   HiLink javaScriptCssStyles            Label
 
+  hi! link Conceal Symbol
+
   delcommand HiLink
 endif
+
+setlocal conceallevel=2
 
 " Define the htmlJavaScript for HTML syntax html.vim
 "syntax clear htmlJavaScript
