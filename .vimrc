@@ -17,21 +17,26 @@
 "------------------------------------------------------------------------------
 
 " join Vim's copy/paste buffer to the OS clipboard, so they are one
-if has("win32")
+if has("win32") || has('win64')
     set clipboard=unnamed
 else
     set clipboard=unnamedplus
 endif
 
 " set the default Font; syntax depends on the OS
-if has("win32")
-    set gfn=DejaVu\ Sans\ Mono:h11
-    set gfn+=Consolas:h12
+if has("win32") || has('win64')
+    set guifont=Press\ Start\ 2P:h9
+    set guifont+=Fantasque\ Sans\ Mono:h12
+    set guifont+=Envy\ Code\ R:h11:i
+    set guifont+=Consolas:h12
+    set guifont+=DejaVu\ Sans\ Mono:h11
 else
     set guifont=DejaVu\ Sans\ Mono\ 11
     set guifont+=Droid\ Sans\ Mono\ 11
     set guifont+=Monospace\ 11
 endif
+
+set lsp=9
 
 " offer UNIX vim locations on Windows
 if has('win32') || has('win64')
@@ -404,10 +409,10 @@ noremap <c-s-j> :call <SID>swap_down()<CR>
 
 " ctrl+w and then h/j/k/l, switches windows
 " This maps those to just: ctrl+h, ctrl+j, ctrl+k and ctrl+l, for ease of use.
-nnoremap <c-k> <c-w>k
-nnoremap <c-j> <c-w>j
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
+nnoremap <a-k> <c-w>k
+nnoremap <a-j> <c-w>j
+nnoremap <a-h> <c-w>h
+nnoremap <a-l> <c-w>l
 
 " m, horizontal split
 " M, vertical split
@@ -512,6 +517,13 @@ map <S-Enter> O<Esc>
 map <Enter> o<Esc>
 
 " Tab / Shift-Tab indentation
+"   ctrl + h / l
+"   shift + tab
+nnoremap <c-h> <<
+nnoremap <c-l> >>
+vnoremap <c-l> >gv
+vnoremap <c-h> <gv
+
 nnoremap <Tab> >>
 nnoremap <S-Tab> <<
 
