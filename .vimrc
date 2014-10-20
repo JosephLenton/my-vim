@@ -256,109 +256,78 @@ set winaltkeys=no
 
 " alpha
 inoremap <A-a> α
-nmap <A-a> i<A-a><Esc>
 
 " beta
 inoremap <A-b> β
-nmap <A-b> i<A-b><Esc>
 
 " gamma 
 inoremap <A-g> γ
-nmap <A-g> i<A-g><Esc>
 inoremap <A-G> Γ
-nmap <A-G> i<A-G><Esc>
 
 " delta
 inoremap <A-d> δ
-nmap <A-d> i<A-d><Esc>
 inoremap <A-D> Δ
-nmap <A-D> i<A-D><Esc>
 
 " epsilon
 inoremap <A-e> ε
-nmap <A-e> i<A-e><Esc>
  
 " sigma
 inoremap <A-s> σ
-nmap <A-s> i<A-s><Esc>
 inoremap <A-S> ∑
-nmap <A-S> i<A-S><Esc>
 
 " tau!
 inoremap <A-t> τ
-nmap <A-t> i<A-t><Esc>
 
 " Lambda
 inoremap <A-l> λ
-nmap <A-l> i<A-l><Esc>
 inoremap <A-L> Λ
-nmap <A-L> i<A-L><Esc>
 
 " Mu
 inoremap <A-m> μ
-nmap <A-m> i<A-m><Esc>
 
 " Tau alt+t
 inoremap <A-t> τ
-nmap <A-t> i<A-t><Esc>
 
 " Theta alt+T
 inoremap <A-T> Θ
-nmap <A-T> i<A-T><Esc>
 
 " Omega
 inoremap <A-o> ω
-nmap <A-o> i<A-o><Esc>
 inoremap <A-O> Ω
-nmap <A-O> i<A-O><Esc>
 
 " Pi
 inoremap <A-p> π
-nmap <A-p> i<A-p><Esc>
 inoremap <A-P> Π
-nmap <A-P> i<A-P><Esc>
 
 " Phi (f like 'fi')
 inoremap <A-f> φ
-nmap <A-f> i<A-f><Esc>
 inoremap <A-F> Φ
-nmap <A-F> i<A-F><Esc>
 
 " Psi (like a y)
 inoremap <A-y> ψ
-nmap <A-y> i<A-y><Esc>
 inoremap <A-Y> Ψ
-nmap <A-Y> i<A-Y><Esc>
 
 " comparisons
 
 " alt + ! is not equal
 inoremap <A-1> ≠
-nmap <A-1> i<A-1><Esc>
 
 " alt + = is 'identical equal' (triple equal)
 inoremap <A-=> ≡
-nmap <A-=> i<A-><Esc>
 
 " alt + less than, is less than equal
 inoremap <A-<> ≤
-nmap <A-<> i<A-<><Esc>
 
 " alt + greater than, is greater than equal
 inoremap <A->> ≥
-nmap <A->> i<A->><Esc>
 
 " right arrow
 inoremap <A-right> →
-nmap <A-right> i<A-right><Esc>
 inoremap <A-S-right> ⇒
-nmap <A-S-right> i<A-S-right><Esc>
 
 " left arrow
 inoremap <A-left> ←
-nmap <A-left> i<A-left><Esc>
 inoremap <A-S-left> ⇐
-nmap <A-S-left> i<A-S-left><Esc>
 
 "------------------------------------------------------------------------------
 " 
@@ -409,9 +378,9 @@ noremap <c-s-j> :call <SID>swap_down()<CR>
 
 " ctrl+w and then h/j/k/l, switches windows
 " This maps those to just: ctrl+h, ctrl+j, ctrl+k and ctrl+l, for ease of use.
-nnoremap <a-k> <c-w>k
-nnoremap <a-j> <c-w>j
 nnoremap <a-h> <c-w>h
+nnoremap <a-j> <c-w>j
+nnoremap <a-k> <c-w>k
 nnoremap <a-l> <c-w>l
 
 " m, horizontal split
@@ -465,10 +434,6 @@ nmap <Space> a_<Esc>r
 nmap <S-Space> i_<Esc>r
 
 " Move Text around with Alt+hjkl
-nnoremap <A-j> :m+<CR>==
-nnoremap <A-k> :m-2<CR>==
-nnoremap <A-h> <<
-nnoremap <A-l> >>
 "inoremap <A-j> <Esc>:m+<CR>==gi
 "inoremap <A-k> <Esc>:m-2<CR>==gi
 "inoremap <A-h> <Esc><<`]a
