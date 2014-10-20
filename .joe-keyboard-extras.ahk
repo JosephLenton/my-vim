@@ -19,7 +19,13 @@
 ; ctrl+q -> remaps to 'open context menu'
 #IfWinNotActive ahk_class Vim
 {
-    ^q::Send +{F10}
+    #IfWinNotActive ahk_class K2_ContainerWindow
+    {
+        #IfWinNotActive ahk_class K2_D9
+        {
+            ^q::Send +{F10}
+        }
+    }
 }
 
 ; 
