@@ -22,7 +22,7 @@
     {
         #IfWinNotActive ahk_class K2_D9
         {
-            ^q::Send +{F10}
+            ^q::Send {AppsKey}
         }
     }
 }
