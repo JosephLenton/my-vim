@@ -6,12 +6,11 @@
 ;------------------------------------------------------------------------------
 
 ; 
-; Start + v shows the all-apps tab
+;       Alt-Gr + f -> Backtick
 ; 
-#v:: 
-    Send {LWin}
-    Send ^{Tab}
-    return
+; alt+ctrl (alt-gr) + f will send the back tick normally found above tab
+; this is missing on my keyboard : (
+<^!f::SendRaw ``
 
 ; 
 ;       Vim
@@ -72,4 +71,7 @@
 {
     ^m:: Send ^l^c{tab}
 }
+
+
+
 
