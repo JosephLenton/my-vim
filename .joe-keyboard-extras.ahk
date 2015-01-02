@@ -58,7 +58,7 @@
     ^f:: Send !hn
 
     ; ctrl+r -> create new blank text file
-    ^r:: Send !hw{up}{up}{up}{enter}
+    ^r:: Send !hw{up}{up}{enter}
 }
 
 ; adds 'get url'
