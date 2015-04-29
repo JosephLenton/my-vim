@@ -48,7 +48,10 @@ if has('win32') || has('win64')
     nmap <C-Z> :silent !powershell<CR>
 endif
 
-" use my own colour scheme, which I designed : D
+" start Vim maximized
+au GUIEnter * simalt ~x
+
+" use my own colour scheme (which I designed : D)
 color joe
 
 "------------------------------------------------------------------------------

@@ -1,4 +1,12 @@
 
+" j and k are page up/down
+nnoremap j <c-d>
+nnoremap k <c-u>
+
+" h and l are previous/next tab
+nnoremap h <c-p>
+nnoremap l <c-n>
+
 " maps showing navigation bar to F2
 map <silent> <F2> :js toggleNavigationBar()<CR>
 

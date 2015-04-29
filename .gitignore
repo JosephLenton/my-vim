@@ -21,6 +21,10 @@
 !.greek.js
 !.greek.save.json
 
+# c4 stuff
+!.c4.js
+!.c4.save.json
+
 # auto-it key bindings
 !.joe-keyboard-extras.ahk
 

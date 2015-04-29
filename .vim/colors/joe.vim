@@ -75,8 +75,8 @@ hi CursorIM       gui=NONE   guifg=#A7A7A7   guibg=#A7A7A7
 hi CursorLine     gui=NONE   guibg=#1d2328
 hi CursorLine     gui=NONE   guibg=#1f1f1f   ctermbg=darkred 
 
-hi Folded         gui=NONE   guifg=#cfcfcd   guibg=#4b208f
-hi FoldColumn     gui=NONE   guifg=#8b8bcd   guibg=#2e2e2e
+hi Folded         gui=NONE   guifg=#cfcfcd   guibg=#2e2e2e
+hi FoldColumn     gui=NONE   guifg=#8b8bcd   guibg=#141414
 
 hi Directory      gui=NONE   guifg=#00ff8b   
 hi LineNr         gui=NONE   guifg=#8A8A8A   ctermfg=yellow
