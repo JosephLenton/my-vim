@@ -6,12 +6,11 @@
 ;------------------------------------------------------------------------------
 
 ; 
-; Start + v shows the all-apps tab
+;       Alt-Gr + f -> Backtick
 ; 
-#v:: 
-    Send {LWin}
-    Send ^{Tab}
-    return
+; alt+ctrl (alt-gr) + f will send the back tick normally found above tab
+; this is missing on my keyboard : (
+<^!f::SendRaw ``
 
 ; 
 ;       Vim
@@ -19,7 +18,13 @@
 ; ctrl+q -> remaps to 'open context menu'
 #IfWinNotActive ahk_class Vim
 {
-    ^q::Send +{F10}
+    #IfWinNotActive ahk_class K2_ContainerWindow
+    {
+        #IfWinNotActive ahk_class K2_D9
+        {
+            ^q::Send {AppsKey}
+        }
+    }
 }
 
 ; 
@@ -53,7 +58,7 @@
     ^f:: Send !hn
 
     ; ctrl+r -> create new blank text file
-    ^r:: Send !hw{up}{up}{up}{enter}
+    ^r:: Send !hw{up}{up}{enter}
 }
 
 ; adds 'get url'
@@ -66,4 +71,7 @@
 {
     ^m:: Send ^l^c{tab}
 }
+
+
+
 

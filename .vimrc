@@ -54,8 +54,6 @@ else
     set t_Co=256
 endif
 
-
-
 " start Vim maximized
 au GUIEnter * simalt ~x
 
@@ -141,6 +139,20 @@ filetype plugin on
 
 set ofu=syntaxcomplete#Complete
 
+
+
+"------------------------------------------------------------------------------
+" 
+" # Syntax highlighting for new file types
+"
+"------------------------------------------------------------------------------
+
+au BufNewFile,BufRead *.scala set filetype=scala
+au BufNewFile,BufRead *.bb  set filetype=bb
+au BufNewFile,BufRead *.jsx set filetype=javascriptx
+au BufNewFile,BufRead *.ts  set filetype=typescript
+au BufNewFile,BufRead *.pro set filetype=prolog
+au BufNewFile,BufRead *.vimperatorrc set filetype=vim
 
 
 

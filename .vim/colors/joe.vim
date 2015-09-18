@@ -46,6 +46,9 @@ hi Normal         ctermfg=255
 " these are displayed with an alternative font which supports Unicode
 hi Symbol         gui=NONE   guifg=#eeeeee   guibg=#141414
 
+" these are displayed with an alternative font which supports Unicode
+hi Symbol         gui=NONE   guifg=#eeeeee   guibg=#141414
+
 hi IncSearch      gui=BOLD   guifg=#303030   guibg=#cd8b60
 hi Search         gui=NONE   guifg=#303030   guibg=#cd8b60
 hi ErrorMsg       gui=BOLD   guifg=#ffffff   guibg=#ff3c3c
