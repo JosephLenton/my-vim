@@ -40,7 +40,11 @@ fun! <SID>X(a)
 	endif
 endfun
 
-hi Normal         gui=NONE   guifg=#eeeeee   guibg=#141414 ctermfg=white
+hi Normal         gui=NONE   guifg=#eeeeee   guibg=#141414 ctermfg=white ctermbg=0
+hi Normal         ctermfg=255
+
+" these are displayed with an alternative font which supports Unicode
+hi Symbol         gui=NONE   guifg=#eeeeee   guibg=#141414
 
 hi IncSearch      gui=BOLD   guifg=#303030   guibg=#cd8b60
 hi Search         gui=NONE   guifg=#303030   guibg=#cd8b60
@@ -70,35 +74,57 @@ hi Cursor         gui=NONE   guifg=#A7A7A7   guibg=#A7A7A7
 hi lCursor        gui=NONE   guifg=#A7A7A7   guibg=#A7A7A7
 hi CursorIM       gui=NONE   guifg=#A7A7A7   guibg=#A7A7A7
 hi CursorLine     gui=NONE   guibg=#1d2328
-hi CursorLine     gui=NONE   guibg=#1f1f1f   ctermbg=darkred 
+hi CursorLine     gui=NONE    cterm=NONE guibg=#1f1f1f   ctermbg=darkred
+hi CursorLine     ctermbg=234
 
-hi Folded         gui=NONE   guifg=#cfcfcd   guibg=#4b208f
-hi FoldColumn     gui=NONE   guifg=#8b8bcd   guibg=#2e2e2e
+hi Folded         gui=NONE   guifg=#cfcfcd   guibg=#2e2e2e
+hi FoldColumn     gui=NONE   guifg=#8b8bcd   guibg=#141414
 
 hi Directory      gui=NONE   guifg=#00ff8b   
 hi LineNr         gui=NONE   guifg=#8A8A8A   ctermfg=yellow
+hi LineNr         ctermfg=0
+
 hi CursorLineNr   term=bold ctermfg=Yellow gui=bold guifg=#9A9A9A
+hi CursorLineNr   ctermfg=247
+
 hi NonText        gui=BOLD   guifg=#8b8bcd   
 hi SpecialKey     gui=BOLD   guifg=#ab60ed   
 hi Title          gui=BOLD   guifg=#af4f4b   
 hi Visual         gui=NONE   guifg=#ffffff   guibg=#ff2377 ctermfg=white ctermbg=9
+hi Visual         ctermbg=198
 
-hi Comment        gui=NONE   guifg=#858EB1   ctermfg=3
-hi LineComment    gui=NONE   guifg=#808080   ctermfg=3
+hi Comment        gui=NONE   guifg=#858EB1   ctermfg=7
+hi Comment        ctermfg=103
+hi LineComment    gui=NONE   guifg=#808080   ctermfg=7
+hi LineComment    ctermfg=60
 hi DocComment     gui=NONE   guifg=#88FFFF   ctermfg=grey
+hi DocComment     ctermfg=123
 hi Constant       gui=NONE   guifg=#CF6A4C   ctermfg=red
+hi Constant       ctermfg=167
 hi String         gui=NONE   guifg=#65B042   ctermfg=green
+hi String         ctermfg=77
 hi Error          gui=NONE   guifg=#ff00aa   guibg=#770000 ctermfg=white ctermbg=12
+hi Error          ctermfg=199 ctermbg=88
 hi Identifier     gui=NONE   guifg=#DECF85   ctermfg=13
+hi Identifier     ctermfg=166
 hi Number         gui=NONE   guifg=#CF6A4C   ctermfg=12
+hi Number         ctermfg=167
 hi Ignore         gui=NONE   guifg=#8b8bcd   ctermfg=grey
+hi Ignore         ctermfg=104
 hi PreProc        gui=NONE   guifg=#409090   ctermfg=cyan
+hi PreProc        ctermfg=66
 hi Special        gui=NONE   guifg=#c080d0   
+hi Special        ctermfg=140
 hi Statement      gui=NONE   guifg=#DECF85   ctermfg=yellow
+hi Statement      ctermfg=186
 hi Todo           gui=BOLD   guifg=#ffffff   guibg=#415168 ctermfg=black ctermfg=yellow
+hi Todo           ctermfg=white ctermbg=60
 hi Type           gui=NONE   guifg=#DECF85   
+hi Type           ctermfg=180
 hi Underlined     gui=BOLD   guifg=#ffffcd   ctermfg=yellow
+hi Underlined     ctermfg=230
 hi TaglistTagName gui=BOLD   guifg=#808bed   
+hi TaglistTagName ctermfg=105
 
 if v:version >= 700
     hi Pmenu          gui=NONE   guifg=#eeeeee   guibg=#4e4e8f
@@ -140,5 +166,6 @@ highlight Sig guifg=#999999
 
 "+++
 
-highlight ColorColumn ctermbg=darkgrey guibg=gray18
+hi ColorColumn ctermbg=darkgrey guibg=gray18
+hi ColorColumn ctermbg=234
 
