@@ -17,21 +17,26 @@
 "------------------------------------------------------------------------------
 
 " join Vim's copy/paste buffer to the OS clipboard, so they are one
-if has("win32")
+if has("win32") || has('win64')
     set clipboard=unnamed
 else
     set clipboard=unnamedplus
 endif
 
 " set the default Font; syntax depends on the OS
-if has("win32")
-    set gfn=DejaVu\ Sans\ Mono:h11
-    set gfn+=Consolas:h12
+if has("win32") || has('win64')
+    set guifont=Press\ Start\ 2P:h9
+    set guifont+=Fantasque\ Sans\ Mono:h12
+    set guifont+=Envy\ Code\ R:h11:i
+    set guifont+=Consolas:h12
+    set guifont+=DejaVu\ Sans\ Mono:h11
 else
     set guifont=DejaVu\ Sans\ Mono\ 11
     set guifont+=Droid\ Sans\ Mono\ 11
     set guifont+=Monospace\ 11
 endif
+
+set lsp=9
 
 " offer UNIX vim locations on Windows
 if has('win32') || has('win64')
@@ -43,7 +48,18 @@ if has('win32') || has('win64')
     nmap <C-Z> :silent !powershell<CR>
 endif
 
-" use my own colour scheme, which I designed : D
+" enabme full colour support on Linux
+if has('win32') || has('win64')
+else
+    set t_Co=256
+endif
+
+
+
+" start Vim maximized
+au GUIEnter * simalt ~x
+
+" use my own colour scheme (which I designed : D)
 color joe
 
 "------------------------------------------------------------------------------
@@ -73,7 +89,6 @@ endif
 set autochdir
 
 set nocompatible
-set number
 set autoread
 set smarttab
 set autoindent smartindent
@@ -89,8 +104,12 @@ set nowrap
 set spelllang=en_gb
 set incsearch
 
-set relativenumber
+" line number setup
+set number
 set numberwidth=10
+"set relativenumber
+
+let g:vimroom_sidebar_height = 0
 
 " sets spaces to the vertical window splits
 set fillchars+=vert:\  
@@ -124,19 +143,6 @@ set ofu=syntaxcomplete#Complete
 
 
 
-"------------------------------------------------------------------------------
-" 
-" # Syntax highlighting for new file types
-"
-"------------------------------------------------------------------------------
-
-au BufNewFile,BufRead *.bb  set filetype=bb
-au BufNewFile,BufRead *.jsx set filetype=javascriptx
-au BufNewFile,BufRead *.ts  set filetype=typescript
-au BufNewFile,BufRead *.pro set filetype=prolog
-au BufNewFile,BufRead *.vimperatorrc set filetype=vim
-
-
 
 "------------------------------------------------------------------------------
 "
@@ -154,6 +160,14 @@ DoMatchParen
 noremap z :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR>
 
 
+
+"------------------------------------------------------------------------------
+"
+" # Remove whitespace from empty lines in code files.
+"
+"------------------------------------------------------------------------------
+
+autocmd FileType c,cpp,java,php,scala,ruby,javascript,js,css,stylus,styl autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 "------------------------------------------------------------------------------
 " 
@@ -251,109 +265,78 @@ set winaltkeys=no
 
 " alpha
 inoremap <A-a> α
-nmap <A-a> i<A-a><Esc>
 
 " beta
 inoremap <A-b> β
-nmap <A-b> i<A-b><Esc>
 
 " gamma 
 inoremap <A-g> γ
-nmap <A-g> i<A-g><Esc>
 inoremap <A-G> Γ
-nmap <A-G> i<A-G><Esc>
 
 " delta
 inoremap <A-d> δ
-nmap <A-d> i<A-d><Esc>
 inoremap <A-D> Δ
-nmap <A-D> i<A-D><Esc>
 
 " epsilon
 inoremap <A-e> ε
-nmap <A-e> i<A-e><Esc>
  
 " sigma
 inoremap <A-s> σ
-nmap <A-s> i<A-s><Esc>
 inoremap <A-S> ∑
-nmap <A-S> i<A-S><Esc>
 
 " tau!
 inoremap <A-t> τ
-nmap <A-t> i<A-t><Esc>
 
 " Lambda
 inoremap <A-l> λ
-nmap <A-l> i<A-l><Esc>
 inoremap <A-L> Λ
-nmap <A-L> i<A-L><Esc>
 
 " Mu
 inoremap <A-m> μ
-nmap <A-m> i<A-m><Esc>
 
 " Tau alt+t
 inoremap <A-t> τ
-nmap <A-t> i<A-t><Esc>
 
 " Theta alt+T
 inoremap <A-T> Θ
-nmap <A-T> i<A-T><Esc>
 
 " Omega
 inoremap <A-o> ω
-nmap <A-o> i<A-o><Esc>
 inoremap <A-O> Ω
-nmap <A-O> i<A-O><Esc>
 
 " Pi
 inoremap <A-p> π
-nmap <A-p> i<A-p><Esc>
 inoremap <A-P> Π
-nmap <A-P> i<A-P><Esc>
 
 " Phi (f like 'fi')
 inoremap <A-f> φ
-nmap <A-f> i<A-f><Esc>
 inoremap <A-F> Φ
-nmap <A-F> i<A-F><Esc>
 
 " Psi (like a y)
 inoremap <A-y> ψ
-nmap <A-y> i<A-y><Esc>
 inoremap <A-Y> Ψ
-nmap <A-Y> i<A-Y><Esc>
 
 " comparisons
 
 " alt + ! is not equal
 inoremap <A-1> ≠
-nmap <A-1> i<A-1><Esc>
 
 " alt + = is 'identical equal' (triple equal)
 inoremap <A-=> ≡
-nmap <A-=> i<A-><Esc>
 
 " alt + less than, is less than equal
 inoremap <A-<> ≤
-nmap <A-<> i<A-<><Esc>
 
 " alt + greater than, is greater than equal
 inoremap <A->> ≥
-nmap <A->> i<A->><Esc>
 
 " right arrow
 inoremap <A-right> →
-nmap <A-right> i<A-right><Esc>
 inoremap <A-S-right> ⇒
-nmap <A-S-right> i<A-S-right><Esc>
 
 " left arrow
 inoremap <A-left> ←
-nmap <A-left> i<A-left><Esc>
 inoremap <A-S-left> ⇐
-nmap <A-S-left> i<A-S-left><Esc>
 
 "------------------------------------------------------------------------------
 " 
@@ -404,10 +387,10 @@ noremap <c-s-j> :call <SID>swap_down()<CR>
 
 " ctrl+w and then h/j/k/l, switches windows
 " This maps those to just: ctrl+h, ctrl+j, ctrl+k and ctrl+l, for ease of use.
-nnoremap <c-k> <c-w>k
-nnoremap <c-j> <c-w>j
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
+nnoremap <a-h> <c-w>h
+nnoremap <a-j> <c-w>j
+nnoremap <a-k> <c-w>k
+nnoremap <a-l> <c-w>l
 
 " m, horizontal split
 " M, vertical split
@@ -416,7 +399,7 @@ nnoremap M <c-w>s
 
 " vertical to horizontal & horizontal to vertical
 nnoremap <c-n> <c-w>t<c-w>K
-nnoremap <C-m> <c-w>t<c-w>H
+nnoremap <c-m> <c-w>t<c-w>H
 
 
 
@@ -460,10 +443,6 @@ nmap <Space> a_<Esc>r
 nmap <S-Space> i_<Esc>r
 
 " Move Text around with Alt+hjkl
-nnoremap <A-j> :m+<CR>==
-nnoremap <A-k> :m-2<CR>==
-nnoremap <A-h> <<
-nnoremap <A-l> >>
 "inoremap <A-j> <Esc>:m+<CR>==gi
 "inoremap <A-k> <Esc>:m-2<CR>==gi
 "inoremap <A-h> <Esc><<`]a
@@ -486,18 +465,6 @@ command! W :w
 map H ^
 map L $
 
-" Shift + k, is the opposite of shift + j.
-" That combines lines, this seperates them.
-function! SplitLine()
-    if getline(".")[col(".")-1] != ' '
-        normal! E
-    end
-
-    call feedkeys( "a\<cr>\<esc>" )
-endfunction
-
-nmap <S-k> :call SplitLine()<cr>
-
 " Adds Ctrl-Tab for quick switching
 nnoremap <C-tab> :b#<CR>
 
@@ -512,6 +479,13 @@ map <S-Enter> O<Esc>
 map <Enter> o<Esc>
 
 " Tab / Shift-Tab indentation
+"   ctrl + h / l
+"   shift + tab
+nnoremap <c-h> <<
+nnoremap <c-l> >>
+vnoremap <c-l> >gv
+vnoremap <c-h> <gv
+
 nnoremap <Tab> >>
 nnoremap <S-Tab> <<
 
@@ -527,14 +501,14 @@ let b:searchMoveIsDown = 1
 
 nnoremap ? :let b:searchMoveIsDown = 0<CR>?
 nnoremap / :let b:searchMoveIsDown = 1<CR>/
-nnoremap ~ :let b:searchMoveIsDown = 0<CR>#:call PulseCursorLine()<cr>
-nnoremap # :let b:searchMoveIsDown = 1<CR>*:call PulseCursorLine()<cr>
+nnoremap ~ :let b:searchMoveIsDown = 0<CR>#
+nnoremap # :let b:searchMoveIsDown = 1<CR>*
 
 " Repeats the previous search, but always travelling in the same direction.
 " So 'n' always searches for the next down, and 'N', is always up.
 " Also pulses the current line.
-nnoremap N :call RepeatSearchUp()<cr>:call PulseCursorLine()<cr>
-nnoremap n :call RepeatSearchDown()<cr>:call PulseCursorLine()<cr>
+nnoremap N :call RepeatSearchUp()<cr>
+nnoremap n :call RepeatSearchDown()<cr>
 
 function! RepeatSearchUp()
     if ( b:searchMoveIsDown == 0 )
